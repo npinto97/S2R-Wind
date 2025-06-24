@@ -1,0 +1,9 @@
+{
+    "best_params": {
+        "elasticnet__alpha": 0.1,
+        "elasticnet__l1_ratio": 0.9
+    },
+    "MAE": 128.12,
+    "RMSE": 188.49,
+    "R2": 0.81
+}
