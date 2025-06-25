@@ -3,3 +3,7 @@
 /docs
 /s2r_wind
 s2rmslib\.venv
+s2rmslib\evaluation_dataset
+s2rmslib\training_dataset
+evaluation_dataset
+training_dataset
