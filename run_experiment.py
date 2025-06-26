@@ -1,8 +1,11 @@
 import os
 import pandas as pd
 import yaml
+import joblib
+import numpy as np
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import root_mean_squared_error
+
 
 from s2rmslib.create_pairs import generate_file
 from s2rmslib.TripleNet.tripleNet import train_triple_net
@@ -28,6 +31,9 @@ if __name__ == '__main__':
     data = pd.DataFrame(data)
 
     in_channels = data.shape[1] - 1  # feature number
+
+    # Load scaler_y to denormalize the target
+    scaler_y = joblib.load('./models/scaler_y.joblib')
 
     for run_iter in range(config['experiment_params']['run_iter']):
         for scale in config['dataset_params']['scale_labeled_samples']:
@@ -58,7 +64,21 @@ if __name__ == '__main__':
             reg.fit(file_name, labeled)
             preds = reg.predict(file_name, test, methods=['co_train'])
 
-            rmse = mean_squared_error(preds[3], test.iloc[:, -1])
+            # Denormalize predictions
+            y_pred_scaled = preds[3]
+            y_pred = scaler_y.inverse_transform(y_pred_scaled.reshape(-1, 1)).ravel()
+
+            y_true_scaled = test.iloc[:, -1].values.reshape(-1, 1)
+            y_true = scaler_y.inverse_transform(y_true_scaled).ravel()
+
+            print("\n DEBUG CHECK")
+            print("y_pred (denormalized) min/max:", np.min(y_pred), np.max(y_pred))
+            print("y_true (from test)     min/max:", np.min(y_true), np.max(y_true))
+            print("Sample y_pred:", y_pred[:5])
+            print("Sample y_true:", y_true[:5])
+
+
+            rmse = root_mean_squared_error(y_true, y_pred)
             print(f"[S2RMS] Scale={scale} | Run={run_iter} | RMSE={rmse:.4f}")
 
             results_dir = f"./results/{file_name}/{int(scale * 100)}"
