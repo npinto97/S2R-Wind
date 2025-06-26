@@ -16,11 +16,11 @@ dataset_params:
 model_params:
   number_of_neurons_1: 16
   number_of_neurons_2: 32
-  in_channels: 13           # Verrà sovrascritto dinamicamente
+  in_channels: 18
   number_pos_neg: 5
 
 exp_params:
-  batch_size: 32
+  batch_size: 1024
   epochs: 30
   LR: 0.001
   optimizer: "adam"
