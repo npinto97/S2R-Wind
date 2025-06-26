@@ -11,18 +11,18 @@ np.set_printoptions(precision=3, suppress=True)
 
 
 def create_labeled_pairs(data):
-    x_train = data.iloc[:, :-1]
-    pairs_label = []
-    lst = x_train.index.values.tolist()
+    x = data.iloc[:, :-1].values
+    n = x.shape[0]
 
-    for rand1, rand2 in itertools.combinations_with_replacement(lst, 2):
-        if rand1 == rand2:
-            continue
-        sim = distance.minkowski(x_train.loc[rand1], x_train.loc[rand2])
-        pair = (rand1, rand2, sim)
-        pairs_label.append(pair)
+    # Calculate all distances with scipy (Minkowski by default with p=2 = Euclidean)
+    dist_matrix = distance.cdist(x, x, metric='minkowski')
 
-    return pairs_label
+    # Extract only the upper part of the matrix, without the diagonal
+    pairs = [(i, j, dist_matrix[i, j]) 
+             for i in range(n) for j in range(i + 1, n)]
+
+    return pairs
+
 
 
 def generate_file(labeled_data, unlabeled_data, evaluation_data, scale, is_first_split=True):
