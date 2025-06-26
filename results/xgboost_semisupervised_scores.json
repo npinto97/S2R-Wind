@@ -3,49 +3,49 @@
         "best_params": {
             "colsample_bytree": 0.8,
             "learning_rate": 0.1,
-            "max_depth": 3,
+            "max_depth": 6,
             "n_estimators": 200,
             "subsample": 0.8
         },
-        "MAE": 118.49,
-        "RMSE": 178.94,
-        "R2": 0.779
+        "MAE": 120.6,
+        "RMSE": 198.28,
+        "R2": 0.79
     },
     "5%": {
         "best_params": {
             "colsample_bytree": 0.8,
             "learning_rate": 0.1,
-            "max_depth": 6,
-            "n_estimators": 200,
+            "max_depth": 3,
+            "n_estimators": 100,
             "subsample": 0.8
         },
-        "MAE": 72.18,
-        "RMSE": 108.88,
-        "R2": 0.918
+        "MAE": 108.87,
+        "RMSE": 183.98,
+        "R2": 0.819
     },
     "10%": {
         "best_params": {
             "colsample_bytree": 0.8,
             "learning_rate": 0.1,
-            "max_depth": 6,
-            "n_estimators": 200,
+            "max_depth": 3,
+            "n_estimators": 100,
             "subsample": 0.8
         },
-        "MAE": 66.4,
-        "RMSE": 101.42,
-        "R2": 0.929
+        "MAE": 85.05,
+        "RMSE": 134.77,
+        "R2": 0.903
     },
     "20%": {
         "best_params": {
             "colsample_bytree": 0.8,
             "learning_rate": 0.1,
-            "max_depth": 6,
-            "n_estimators": 200,
+            "max_depth": 3,
+            "n_estimators": 100,
             "subsample": 0.8
         },
-        "MAE": 62.43,
-        "RMSE": 97.36,
-        "R2": 0.935
+        "MAE": 77.85,
+        "RMSE": 121.56,
+        "R2": 0.921
     },
     "100%": {
         "best_params": {
@@ -55,8 +55,8 @@
             "n_estimators": 200,
             "subsample": 0.8
         },
-        "MAE": 31.02,
-        "RMSE": 50.29,
-        "R2": 0.983
+        "MAE": 62.74,
+        "RMSE": 100.08,
+        "R2": 0.946
     }
 }

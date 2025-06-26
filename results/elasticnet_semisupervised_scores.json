@@ -1,47 +1,47 @@
 {
     "1%": {
         "best_params": {
-            "elasticnet__alpha": 10.0,
+            "elasticnet__alpha": 0.1,
             "elasticnet__l1_ratio": 0.9
         },
-        "MAE": 249.37,
-        "RMSE": 309.81,
-        "R2": 0.339
+        "MAE": 154.97,
+        "RMSE": 251.49,
+        "R2": 0.662
     },
     "5%": {
         "best_params": {
             "elasticnet__alpha": 0.1,
-            "elasticnet__l1_ratio": 0.9
+            "elasticnet__l1_ratio": 0.5
         },
-        "MAE": 135.47,
-        "RMSE": 165.12,
-        "R2": 0.812
+        "MAE": 141.75,
+        "RMSE": 203.87,
+        "R2": 0.778
     },
     "10%": {
         "best_params": {
-            "elasticnet__alpha": 1.0,
+            "elasticnet__alpha": 0.1,
             "elasticnet__l1_ratio": 0.9
         },
-        "MAE": 175.21,
-        "RMSE": 201.31,
-        "R2": 0.721
+        "MAE": 132.69,
+        "RMSE": 192.68,
+        "R2": 0.801
     },
     "20%": {
         "best_params": {
             "elasticnet__alpha": 0.1,
             "elasticnet__l1_ratio": 0.9
         },
-        "MAE": 132.59,
-        "RMSE": 162.14,
-        "R2": 0.819
+        "MAE": 130.56,
+        "RMSE": 192.09,
+        "R2": 0.803
     },
     "100%": {
         "best_params": {
             "elasticnet__alpha": 0.1,
             "elasticnet__l1_ratio": 0.9
         },
-        "MAE": 100.82,
-        "RMSE": 136.86,
-        "R2": 0.871
+        "MAE": 127.3,
+        "RMSE": 189.13,
+        "R2": 0.809
     }
 }
