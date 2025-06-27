@@ -1,5 +1,8 @@
 /.venv
-/data
+/data/interim/
+/data/wind.arff
+/data/raw/
+/data/processed/wtb_features.csv
 /docs
 /s2r_wind
 s2rmslib\.venv
