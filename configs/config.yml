@@ -1,7 +1,7 @@
 experiment_params:
   base_data_dir: "./data"
-  run_iter: 50                # Number of experiment iterations   50
-  iteration: 20               # Co-training iterations            20
+  run_iter: 10                # Number of experiment iterations   50
+  iteration: 5               # Co-training iterations            20
   tau: 3                      # Threshold per smearing            3
   gr: 1                       # Growth rate per iteration         1
   K: 3                        # K-nearest neighbors               3
@@ -28,8 +28,3 @@ exp_params:
 logging_params:
   save_dir: "./saves/"
   manual_seed: 2333
-
-
-
-
-
