@@ -2,6 +2,7 @@
 /data/interim/
 /data/wind.arff
 /data/raw/
+/data/swdpf
 /data/processed/wtb_features.csv
 /docs
 /s2r_wind
