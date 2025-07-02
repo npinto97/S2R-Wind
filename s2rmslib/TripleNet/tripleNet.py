@@ -13,7 +13,7 @@ def get_pre_data_loaders(**config):
     pre_triplet_loader = DataLoader(
         pre_triplet_dataset, 
         shuffle=True, 
-        num_workers=8,
+        num_workers=os.cpu_count() - 2,
         batch_size=config['exp_params']['batch_size'])
     
     return pre_triplet_loader
