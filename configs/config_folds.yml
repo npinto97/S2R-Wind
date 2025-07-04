@@ -7,7 +7,7 @@ experiment_params:
   K: 3                        # K-nearest neighbors               3
 
 dataset_params:
-  scale_labeled_samples: [0.1, 0.2, 0.3]                # [0.005, .025, .05]
+  scale_labeled_samples: [10, 20, 70]                # [0.005, .025, .05]
   dataset_path_fixed: "training_dataset"
   evaluation_path_fixed: "evaluation_dataset"
   dataset_path: "training_dataset"
