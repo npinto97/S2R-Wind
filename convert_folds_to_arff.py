@@ -16,57 +16,64 @@ for i in range(8):
     test_csv = os.path.join(fold_path, "test.csv")
 
     if not (os.path.exists(train_csv) and os.path.exists(test_csv)):
-        print(f"Fold {i} missing train/test.")
+        print(f"[WARNING] Fold {i} missing train/test.")
         continue
 
-    print(f"Processing fold {i}...")
+    print(f"\n[INFO] Processing fold {i}...")
 
+    # Load datasets
     df_train = pd.read_csv(train_csv)
     df_test = pd.read_csv(test_csv)
-    df = pd.concat([df_train, df_test], ignore_index=True)
 
-    if "date" in df.columns:
-        df['date'] = pd.to_datetime(df['date'], errors='coerce')
-        df['date_ts'] = df['date'].astype('int64') // 1_000_000_000
-        df['hour'] = df['date'].dt.hour
-        df['minute'] = df['date'].dt.minute
-        df['dayofweek'] = df['date'].dt.dayofweek
-        df.drop(columns=["date"], inplace=True)
+    # Optional datetime processing
+    for df in [df_train, df_test]:
+        if "date" in df.columns:
+            df['date'] = pd.to_datetime(df['date'], errors='coerce')
+            df['date_ts'] = df['date'].astype('int64') // 1_000_000_000
+            df['hour'] = df['date'].dt.hour
+            df['minute'] = df['date'].dt.minute
+            df['dayofweek'] = df['date'].dt.dayofweek
+            df.drop(columns=["date"], inplace=True)
 
-    # Extract and remove target
-    if TARGET_COL not in df.columns:
-        raise ValueError(f"Target column '{TARGET_COL}' not found in fold {i}.")
+    # Separate target
+    if TARGET_COL not in df_train.columns or TARGET_COL not in df_test.columns:
+        raise ValueError(f"[ERROR] Target column '{TARGET_COL}' not found in fold {i}.")
 
-    target = df[TARGET_COL].values.reshape(-1, 1)
-    df = df.drop(columns=[TARGET_COL])
+    y_train = df_train.pop(TARGET_COL).values.reshape(-1, 1)
+    y_test = df_test.pop(TARGET_COL).values.reshape(-1, 1)
 
-    # Keep only numerical features
-    df = df.select_dtypes(include=['number'])
+    # Keep only numeric features
+    df_train = df_train.select_dtypes(include=['number'])
+    df_test = df_test.select_dtypes(include=['number'])
 
-    # === Normalize input features ===
+    # Fit scalers on training set only
     scaler_X = StandardScaler()
-    df_scaled = pd.DataFrame(scaler_X.fit_transform(df), columns=df.columns)
+    df_train_scaled = pd.DataFrame(scaler_X.fit_transform(df_train), columns=df_train.columns)
+    df_test_scaled = pd.DataFrame(scaler_X.transform(df_test), columns=df_test.columns)
 
-    # === Normalize target and save both scalers ===
     scaler_y = StandardScaler()
-    target_scaled = scaler_y.fit_transform(target).ravel()
+    y_train_scaled = scaler_y.fit_transform(y_train).ravel()
+    y_test_scaled = scaler_y.transform(y_test).ravel()
 
-    df_scaled[TARGET_COL] = target_scaled
+    df_train_scaled[TARGET_COL] = y_train_scaled
+    df_test_scaled[TARGET_COL] = y_test_scaled
 
-    attributes = [(col, 'REAL') for col in df_scaled.columns]
-    data = df_scaled.astype(float).values.tolist()
+    def save_arff(df_scaled, split):
+        attributes = [(col, 'REAL') for col in df_scaled.columns]
+        data = df_scaled.astype(float).values.tolist()
+        arff_dict = {
+            'relation': f'swdpf_fold{i}_{split}',
+            'attributes': attributes,
+            'data': data
+        }
+        arff_path = os.path.join(OUTPUT_PATH, f'fold{i}_{split}.arff')
+        with open(arff_path, 'w') as f:
+            arff.dump(arff_dict, f)
+        print(f"[INFO] Saved ARFF: {arff_path}")
 
-    arff_dict = {
-        'relation': f'swdpf_fold{i}',
-        'attributes': attributes,
-        'data': data
-    }
-
-    arff_path = os.path.join(OUTPUT_PATH, f'fold{i}.arff')
-    with open(arff_path, 'w') as f:
-        arff.dump(arff_dict, f)
-    print(f"Saved ARFF: {arff_path}")
+    save_arff(df_train_scaled, "train")
+    save_arff(df_test_scaled, "test")
 
     joblib.dump(scaler_X, os.path.join(OUTPUT_PATH, f'scaler_X_fold{i}.joblib'))
     joblib.dump(scaler_y, os.path.join(OUTPUT_PATH, f'scaler_y_fold{i}.joblib'))
-    print(f"Saved scalers for fold {i}")
+    print(f"[INFO] Saved scalers for fold {i}")
