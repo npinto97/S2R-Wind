@@ -8,11 +8,11 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset_name' ,type=str ,default='swdpf' ,help='dataset name')
-parser.add_argument('--data' ,type=str ,default="data/raw/wtbdata_245days.csv" ,help='data path')
+parser.add_argument('--data' ,type=str ,default="data/raw/wtbdata_10turbines.csv" ,help='data path')
 parser.add_argument('--locations' ,type=str ,default="data/raw/turb_location.csv" ,help='locations file path')
 parser.add_argument('--n_targets' ,type=int ,default=1 ,help='number of target time-steps')
 parser.add_argument('--n_hist_steps' ,type=int ,default=12 ,help='number of historical features time-steps')
-parser.add_argument('--size_train', type=int, default=30, help='size train in terms of days')
+parser.add_argument('--size_train', type=int, default=15, help='size train in terms of days')
 parser.add_argument('--size_test', type=int, default=7, help='size test in terms of days')
 parser.add_argument('--targetcol', type=str, default="patv_target", help='name column target')
 parser.add_argument('--id_key', type=str, default="turbid", help='name id key')
@@ -46,7 +46,7 @@ def prep_data_sdwpf(args):
     data = data.rename({"patv": "patv_target"})
     data = data.join(locations, on="turbid").drop("tmstamp")
     seed(1)
-    sequence = [i for i in np.arange(30, 245)]
+    sequence = [i for i in np.arange(15, 245)]
     subset = sample(sequence, 8)
 
     return subset,data
