@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import numpy as np
 
-def load_s2rms_results(base_path="./results/swdpf_folds", scales=[10, 20, 70], num_folds=1):
+def load_s2rms_results(base_path="./results/swdpf_folds", scales=[10, 20, 70], num_folds=8):
     dfs = []
     for scale in scales:
         for fold in range(num_folds):
