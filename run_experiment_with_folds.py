@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     base_dir = config['experiment_params']['base_data_dir']
 
-    for fold in range(2, 8):  # Set range(8) for the full CV
+    for fold in range(8):  # Set range(8) for the full CV
         train_arff_path = os.path.join(base_dir, f"fold{fold}_train.arff")
         test_arff_path = os.path.join(base_dir, f"fold{fold}_test.arff")
         file_name = f"swdpf_fold{fold}"
