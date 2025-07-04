@@ -5,11 +5,13 @@ from sklearn.metrics import mean_squared_error
 from sklearn.utils import shuffle
 from sklearn.base import clone
 from joblib import Parallel, delayed
+from xgboost import DMatrix
 
 from s2rmslib.create_pairs import generate_file
 from s2rmslib.select_samples import select_sim_samples
 from s2rmslib.transform_data import transform
 
+MAX_CANDIDATES = 500  # Limit retraining to top-N stable samples
 
 class S2RM:
     def __init__(self, co_learners, scale, in_channels, iteration=20, tau=1, gr=1, K=3):
@@ -27,18 +29,18 @@ class S2RM:
         self.labeled_v_data = []
         self.pi = []
 
-        for learner in self.co_learners:
+        for i, learner in enumerate(self.co_learners):
             inner_data = self.labeled_data.sample(frac=0.8, random_state=42)
             outer_data = self.labeled_data.drop(inner_data.index)
 
-            inner_data_np = transform(data_name, inner_data, in_channels=self.in_channels)
-            outer_data_np = transform(data_name, outer_data, in_channels=self.in_channels)
+            inner_np = transform(data_name, inner_data, self.in_channels)
+            outer_np = transform(data_name, outer_data, self.in_channels)
 
-            self.labeled_l_data.append(inner_data_np)
-            self.labeled_v_data.append(outer_data_np)
+            self.labeled_l_data.append(inner_np)
+            self.labeled_v_data.append(outer_np)
             self.pi.append(None)
 
-            learner.fit(inner_data_np[:, :-1], inner_data_np[:, -1])
+            learner.fit(inner_np[:, :-1], inner_np[:, -1])
 
     def _select_relevant_examples(self, j, unlabeled_data, labeled_v_data, gr, data_name):
         transformed_unlabeled = transform(data_name, unlabeled_data, self.in_channels)
@@ -50,8 +52,8 @@ class S2RM:
         )
 
         other_preds = np.array([
-            learner.predict(transformed_unlabeled[:, :-1])
-            for idx, learner in enumerate(self.co_learners) if idx != j
+            self.co_learners[i].predict(transformed_unlabeled[:, :-1])
+            for i in range(len(self.co_learners)) if i != j
         ])
 
         std_res = np.std(other_preds, axis=0)
@@ -60,7 +62,10 @@ class S2RM:
         if len(stable_indices) == 0:
             return np.array([]), []
 
-        # Predicted pseudo-labels
+        # Limit to MAX_CANDIDATES
+        if len(stable_indices) > MAX_CANDIDATES:
+            stable_indices = stable_indices[:MAX_CANDIDATES]
+
         mean_preds = np.mean(other_preds[:, stable_indices], axis=0)
         candidate_data = transformed_unlabeled[stable_indices, :-1]
         pred_unlabeled_data = np.hstack([candidate_data, mean_preds.reshape(-1, 1)])
@@ -78,7 +83,7 @@ class S2RM:
             eps_new = mean_squared_error(model.predict(labeled_X), labeled_y)
             return (epsilon_j - eps_new) / (epsilon_j + eps_new)
 
-        delta_scores = Parallel(n_jobs=-1)(
+        delta_scores = Parallel(n_jobs=2, backend="threading")(
             delayed(eval_candidate)(x_u.reshape(1, -1)) for x_u in pred_unlabeled_data
         )
 
@@ -103,8 +108,6 @@ class S2RM:
         origin_size = self.labeled_data.shape[0]
 
         while not selected.empty:
-            # self._inner_test(data_name, selected)  # Optional debug step
-
             for i in range(len(self.co_learners)):
                 pool = shuffle(selected, random_state=42).reset_index(drop=True)
                 selected_pi, idx = self._select_relevant_examples(
@@ -138,7 +141,6 @@ class S2RM:
         )
 
         for it in range(self.iteration):
-            print(f"[S2RMS] Iteration {it + 1}/{self.iteration}")
             if selected.empty:
                 break
 
@@ -149,6 +151,7 @@ class S2RM:
 
             generate_file(self.labeled_data, unlabeled_data, None, is_first_split=False, scale=self.scale)
             self.tau *= 0.98
+
             selected, unlabeled_data, is_select_all = select_sim_samples(
                 data_name=data_name,
                 tau=self.tau,
@@ -166,11 +169,17 @@ class S2RM:
             methods = ['co_train']
 
         if 'co_train' in methods:
-            preds = [
-                learner.predict(data_x) * (1 / len(self.co_learners))
-                for learner in self.co_learners
-            ]
-            results.extend([learner.predict(data_x) for learner in self.co_learners])
+            preds = []
+            for learner in self.co_learners:
+                try:
+                    x_dmatrix = DMatrix(data_x, device='cuda')
+                    y_pred = learner.predict(x_dmatrix)
+                except Exception:
+                    y_pred = learner.predict(data_x)
+
+                preds.append(y_pred * (1 / len(self.co_learners)))
+                results.append(y_pred)
+
             results.append(np.sum(preds, axis=0))
 
         return results
