@@ -2,7 +2,8 @@
 /data/interim/
 /data/wind.arff
 /data/raw/
-/data/swdpf
+/data/swdpf/T1H12
+/data/swdpf/arff_folds
 /data/processed/wtb_features.csv
 /docs
 /s2r_wind
