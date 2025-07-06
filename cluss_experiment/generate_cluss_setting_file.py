@@ -4,7 +4,7 @@ scales = [10, 20, 70]
 folds = range(8)
 TARGET_NAME = "patv_target_1"
 
-def generate_settings_from_arff(arff_path, settings_path, target_name=TARGET_NAME):
+def generate_settings_from_arff(arff_path, test_path, settings_path, target_name=TARGET_NAME, scale=0):
     with open(arff_path, 'r') as f:
         lines = f.readlines()
 
@@ -21,52 +21,24 @@ RandomSeed = 42
 
 [Data]
 File = {arff_path}
-TestSet = None
+TestSet = {test_path}
 PruneSet = None
 
 [Attributes]
-Target = {target_index}
-Weights = Normalize
-
-[Model]
-MinimalWeight = 2.0
+Descriptive = 1-19
+Target = 20
 
 [Tree]
 Heuristic = VarianceReduction
-FTest = 1.0
-ConvertToRules = No
 
 [Ensemble]
+SelectRandomSubspaces = SQRT
 EnsembleMethod = RForest
-Iterations = 30
+FeatureRanking = Genie3
+Iterations = 10 
 
 [SemiSupervised]
-SemiSupervisedMethod = SelfTraining
-StoppingCriteria = NoneAdded
-Iterations = 1
-UnlabeledCriteria = KMostConfident
-K = 5
-ConfidenceMeasure = Variance
-UseWeights = No
-Normalization = NoNormalization
-Aggregation = Average
-OOBErrorCalculation = LabeledOnly
-PercentageLabeled = {scale}
-
-[Output]
-ShowModels = Default
-TrainErrors = No
-TestErrors = Yes
-AllFoldModels = No
-AllFoldErrors = No
-AllFoldDatasets = No
-UnknownFrequency = No
-BranchFrequency = No
-ShowInfo = Count
-PrintModelAndExamples = No
-WriteModelFile = No
-WritePredictions = Test
-GzipOutput = No
+SemiSupervisedMethod = PCT
 
 """
 
@@ -75,9 +47,13 @@ GzipOutput = No
 
     print(f"Settings written: {settings_path}")
 
+base_data_path = "C:/Users/Ningo/Desktop/S2R-Wind/data/swdpf/clus_ssl_arffs"
+settings_output_path = "C:/Users/Ningo/Desktop/S2R-Wind/data/swdpf/clus_ssl_settings"
 
 for fold in folds:
+    test_file_path = os.path.join(base_data_path, f"fold{fold}_test.arff")
     for scale in scales:
-        arff_file = f"C:/Users/Ningo/Desktop/S2R-Wind/data/swdpf/clus_ssl_arffs/fold{fold}_ssl_{scale}.arff"
-        settings_file = f"C:/Users/Ningo/Desktop/S2R-Wind/data/swdpf/clus_ssl_settings/fold{fold}_ssl_{scale}.s"
-        generate_settings_from_arff(arff_file, settings_file)
+        train_file_path = os.path.join(base_data_path, f"fold{fold}_ssl_{scale}.arff")
+        settings_file_path = os.path.join(settings_output_path, f"fold{fold}_ssl_{scale}.s")
+
+        generate_settings_from_arff(train_file_path, test_file_path, settings_file_path, scale=scale)
