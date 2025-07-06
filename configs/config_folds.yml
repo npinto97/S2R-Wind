@@ -1,5 +1,5 @@
 experiment_params:
-  base_data_dir: "./data/swdpf/arff_folds"
+  base_data_dir: "./data/swdpf/arff_scaled_folds"
   run_iter: 1                # Number of experiment iterations   50
   iteration: 1                # Co-training iterations            20
   tau: 3                      # Threshold per smearing            3
