@@ -1,0 +1,122 @@
+\documentclass{article}
+
+% Language setting
+% Replace english' with e.g. spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace letterpaper' with a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{csquotes}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+% Definizione dei colori personalizzati
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codeblue}{rgb}{0.25,0.5,0.75}
+\definecolor{codered}{rgb}{0.75,0.25,0.25}
+
+% Definizione dello stile personalizzato
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Definizione del linguaggio personalizzato per il codice specifico
+\lstdefinelanguage{customjson}{
+    morestring=[b]",               % Per interpretare le stringhe
+    morekeywords={jtype, identity, label, properties, name, license, softwareType, softwareCategory, presentationDate, subject, object, developedBy}, % Parole chiave
+    keywordstyle=\color{magenta},  % Stile delle parole chiave
+    sensitive=false,               % Case insensitive
+    alsoletter={":,{}"},           % Considera anche i caratteri speciali
+    literate=
+     *{0}{{{\color{codeblue}0}}}{1} % Colore per i numeri 0-9
+      {1}{{{\color{codeblue}1}}}{1}
+      {2}{{{\color{codeblue}2}}}{1}
+      {3}{{{\color{codeblue}3}}}{1}
+      {4}{{{\color{codeblue}4}}}{1}
+      {5}{{{\color{codeblue}5}}}{1}
+      {6}{{{\color{codeblue}6}}}{1}
+      {7}{{{\color{codeblue}7}}}{1}
+      {8}{{{\color{codeblue}8}}}{1}
+      {9}{{{\color{codeblue}9}}}{1}
+      {:}{{{\color{codered}:}}}{1} % Colore per i due punti
+      {,}{{{\color{codered},}}}{1} % Colore per le virgole
+      {\{}{{{\color{orange}{\{}}}}{1} % Colore per parentesi graffe aperte
+      {\}}{{{\color{orange}{\}}}}}{1}, % Colore per parentesi graffe chiuse
+}
+
+% Define a custom language style for JSON
+\lstdefinelanguage{json}{
+    literate=
+     *{0}{{{\color{blue}0}}}{1} % Colors for numbers
+      {1}{{{\color{blue}1}}}{1}
+      {2}{{{\color{blue}2}}}{1}
+      {3}{{{\color{blue}3}}}{1}
+      {4}{{{\color{blue}4}}}{1}
+      {5}{{{\color{blue}5}}}{1}
+      {6}{{{\color{blue}6}}}{1}
+      {7}{{{\color{blue}7}}}{1}
+      {8}{{{\color{blue}8}}}{1}
+      {9}{{{\color{blue}9}}}{1}
+      {:}{{{\color{red}:}}}{1} % Colors for colons
+      {,}{{{\color{red},}}}{1} % Colors for commas
+      {\{}{{{\color{orange}{\{}}}}{1} % Colors for braces
+      {\}}{{{\color{orange}{\}}}}}{1},
+}
+
+
+\lstset{style=mystyle}
+
+\title{S2R-Wind: Semi-Supervised Regression on Wind Power Forecasting}
+
+\author{Nicolas Pinto - Student ID: 807348 \\\href{https://github.com/npinto97/S2R-Wind}{https://github.com/npinto97/S2R-Wind}}
+\date{A.Y. 2024-2025}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\input{contents/introduction}
+
+\section{Dataset and Preprocessing}
+\input{contents/dataset_preprocess}
+
+\section{Methodology}
+\input{contents/methodology}
+
+\section{Evaluation and Conclusion}
+\input{contents/evaluation}
+
+
+
+\bibliographystyle{abbrv}
+\bibliography{sample}
+
+
+\end{document}

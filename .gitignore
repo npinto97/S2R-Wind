@@ -6,7 +6,6 @@
 /data/swdpf/arff_folds
 /data/swdpf/arff_scaled_folds
 /data/processed/wtb_features.csv
-/docs
 /s2r_wind
 s2rmslib\.venv
 s2rmslib\evaluation_dataset

@@ -1,0 +1,16 @@
+We examine three categories of models: a semi-supervised ensemble approach (S2RMS), traditional supervised baselines (ElasticNet and XGBoost), and a decision tree-based semi-supervised learner (CLUS+).
+
+\subsection{S2RMS}
+
+The Semi-Supervised Regression with Model Selection (S2RMS)\cite{liu2024semi} framework is based on a co-training paradigm using multiple regressors. Each model is initially trained on a random subset of labeled data. At each iteration, pseudo-labeled samples are selected from the unlabeled pool based on inter-model agreement, measured as low prediction variance, and retained only if they improve validation performance. This selection loop continues for a fixed number of iterations or until convergence. The original S2RMS implementation uses three Random Forest regressors as co-learners. However, in this work, we replaced them with three XGBoost regressors to improve computational efficiency and enable GPU acceleration, making the framework more suitable for large-scale and time-constrained experiments.
+
+The S2RMS pipeline includes a triplet network trained to learn a discriminative embedding space using labeled examples. Regression is then performed in this transformed space using the ensemble of XGBoost models. We limit the number of candidate samples per iteration to prevent memory saturation and ensure scalability. All random seeds are fixed for reproducibility.
+\subsection{ElasticNet and XGBoost}
+
+ElasticNet and XGBoost serve as supervised baselines. For each fold, a fixed number of labeled samples, 10\%, 20\%, 70\% or 100\% of the full training set, are used for training. Hyperparameters are optimized using cross-validation over a predefined grid. The test set is kept fixed and consists of all unseen instances from the subsequent 7-day window. Data normalization is performed using StandardScaler, applied independently to features and targets. These models do not use any unlabeled data.
+
+\subsection{CLUS+}
+
+CLUS+\cite{petkovic2023clusplus} operates in a different regime, using partially labeled data directly within its tree induction process. The framework builds Predictive Clustering Trees (PCTs) that are capable of handling missing target values during training, enabling semi-supervised learning without explicit pseudo-labeling. In our experiments, CLUS+ is used with its ensemble mode (Random Forest) and semi-supervised configuration (\texttt{-forest -ssl}). The framework automatically applies MinMax normalization internally. For each fold and scale, the training set is converted to ARFF format, and target values are masked with \texttt{?} for unlabeled instances. A corresponding test set is provided for evaluation.
+
+All experiments are run across the same folds and labeling percentages to ensure a consistent and fair comparison. The evaluation metrics used include RMSE, MAE, RSE, and R$^2$, computed on the denormalized predictions.

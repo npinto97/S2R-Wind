@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{liu2024semi}
+L.~Liu, J.~Zhang, K.~Qian, and F.~Min.
+\newblock Semi-supervised regression via embedding space mapping and pseudo-label smearing.
+\newblock {\em Applied Intelligence}, 54(20):9622--9640, 2024.
+
+\bibitem{petkovic2023clusplus}
+M.~Petkovi{\'c}, J.~Levati{\'c}, D.~Kocev, M.~Breskvar, and S.~D{\v{z}}eroski.
+\newblock Clusplus: A decision tree-based framework for predicting structured outputs.
+\newblock {\em SoftwareX}, 24:101526, 2023.
+
+\end{thebibliography}
