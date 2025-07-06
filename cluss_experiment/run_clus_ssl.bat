@@ -10,7 +10,7 @@ if not exist "%OUTPUT_DIR%" (
 )
 
 set SCALES=10 20 70
-set FOLDS=1 2 3 4 5 6 7
+set FOLDS=0 1 2 3 4 5 6 7
 
 for %%F in (%FOLDS%) do (
     for %%S in (%SCALES%) do (
@@ -18,7 +18,7 @@ for %%F in (%FOLDS%) do (
         set "SETTINGS_FILE=%SETTINGS_DIR%\fold%%F_ssl_%%S.s"
         set "OUTPUT_FILE=%OUTPUT_DIR%\fold%%F_ssl_%%S.out"
 
-        java -jar "%CLUS_JAR%" -ssl "!SETTINGS_FILE!" > "!OUTPUT_FILE!"
+        java -Xmx32G -jar "%CLUS_JAR%" -forest -ssl "!SETTINGS_FILE!" > "!OUTPUT_FILE!"
 
         echo Output saved to !OUTPUT_FILE!
     )
