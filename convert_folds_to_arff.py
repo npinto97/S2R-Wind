@@ -23,11 +23,9 @@ for i in range(8):
 
     print(f"\n[INFO] Processing fold {i}...")
 
-    # Load datasets
     df_train = pd.read_csv(train_csv)
     df_test = pd.read_csv(test_csv)
 
-    # Optional datetime processing
     for df in [df_train, df_test]:
         if "date" in df.columns:
             df['date'] = pd.to_datetime(df['date'], errors='coerce')
@@ -67,11 +65,9 @@ for i in range(8):
             arff.dump(arff_dict, f)
         print(f"[INFO] Saved ARFF: {arff_path}")
 
-    # Save raw (non-normalized) ARFF files
     save_arff(df_train_raw, "train", i, RAW_OUTPUT_PATH)
     save_arff(df_test_raw, "test", i, RAW_OUTPUT_PATH)
 
-    # Normalize
     scaler_X = StandardScaler()
     df_train_scaled = pd.DataFrame(scaler_X.fit_transform(df_train), columns=df_train.columns)
     df_test_scaled = pd.DataFrame(scaler_X.transform(df_test), columns=df_test.columns)
@@ -83,11 +79,9 @@ for i in range(8):
     df_train_scaled[TARGET_COL] = y_train_scaled
     df_test_scaled[TARGET_COL] = y_test_scaled
 
-    # Save scaled ARFF files
     save_arff(df_train_scaled, "train", i, SCALED_OUTPUT_PATH)
     save_arff(df_test_scaled, "test", i, SCALED_OUTPUT_PATH)
 
-    # Save scalers
     joblib.dump(scaler_X, os.path.join(SCALED_OUTPUT_PATH, f'scaler_X_fold{i}.joblib'))
     joblib.dump(scaler_y, os.path.join(SCALED_OUTPUT_PATH, f'scaler_y_fold{i}.joblib'))
     print(f"[INFO] Saved scalers for fold {i}")
