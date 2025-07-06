@@ -1,60 +1,75 @@
+# S2R-Wind: Semi-Supervised Regression on Wind Power Forecasting
 
-# Semi-Supervised Regression on Wind Turbine Dataset using S2RMS
+This repository contains all the code, configuration, and results for a project focused on **semi-supervised regression** for wind power prediction using multiple techniques:
 
-This repository contains the implementation and evaluation of the **S2RMS** semi-supervised regression framework applied to a real-world wind turbine dataset. The project replicates and extends the method proposed in the original S2RMS paper and benchmarks it against two supervised learning baselines: **ElasticNet** and **XGBoost**.
+* **S2RMS (Semi-Supervised Regression via Multi-Source Co-Training)**
+* **ElasticNet** and **XGBoost** baselines
+* **CLUS+**, a Java-based framework for semi-supervised learning with Predictive Clustering Trees (PCTs)
 
-> Liu, Liyan, et al. *Semi-supervised regression via embedding space mapping and pseudo-label smearing*. Applied Intelligence, 54(20), 9622–9640 (2024). [https://doi.org/10.1007/s10489-023-04966-y](https://doi.org/10.1007/s10489-023-04966-y)
+All experiments are performed on a real-world wind turbine dataset (`wtbdata_245days.csv`) and are evaluated across **multiple folds**, **scales of labeled data**, and **multiple model types**.
 
-## Project Structure
+
+## Experiment Overview
+
+### Datasets
+
+* Source: `wtbdata_245days.csv` (preprocessed and filtered to 10 turbines)
+* Features include lagged power outputs and timestamp encodings
+* Targets: `patv_target_1`
+* 8-fold split over time; each fold contains 15 days of training and 7 of testing
+
+### Approaches
+
+| Method         | Type            | Description                                                 |
+| -------------- | --------------- | ----------------------------------------------------------- |
+| **S2RMS**      | Semi-Supervised | Iterative multi-learner co-training with triplet embeddings |
+| **ElasticNet** | Supervised      | Baseline linear model with grid search over regularization  |
+| **XGBoost**    | Supervised      | Baseline tree-based model with cross-validation             |
+| **CLUS+**      | Semi-Supervised | Java-based PCT model with `-ssl` and `-forest` enabled      |
+
+### Labeled Data Scales
+
+* Experiments are repeated with **10%**, **20%**, and **70%** labeled data from each fold.
+
+## Evaluation Metrics
+
+Each method is evaluated on:
+
+* **RMSE**: Root Mean Squared Error
+* **MAE**: Mean Absolute Error
+* **RSE**: Relative Squared Error
+* **R²**: Coefficient of Determination
+
+Results are aggregated across folds and exported to:
+
+```bash
+fold_results_summary.xlsx
+```
+
+## References
+
+* **S2RMS**: [Liu et al., 2024](https://link.springer.com/article/10.1007/s10489-024-05686-6)
+* **CLUS+**: [Petković et al., 2023](https://doi.org/10.1016/j.softx.2023.101526)
 
 ```
-.
-├── data/                    # Processed wind turbine dataset
-├── s2rmslib/                # Core implementation of S2RMS (from original repo)
-├── models/                  # Saved models for each method
-├── results/                 # Experimental results (CSV, JSON)
-├── configs/                 # YAML configuration files
-├── notebooks/               # Jupyter notebooks for analysis and plotting
-├── prepare\_dataset.py       # Script to normalize and convert data to ARFF
-├── run\_experiment.py        # Main script to run S2RMS on wind data
-└── README.md
+@article{liu2024semi,
+  title={Semi-supervised regression via embedding space mapping and pseudo-label smearing},
+  author={Liu, Liyan and Zhang, Jin and Qian, Kun and Min, Fan},
+  journal={Applied Intelligence},
+  volume={54},
+  number={20},
+  pages={9622--9640},
+  year={2024},
+  publisher={Springer}
+}
 
-````
-
-## Dataset
-The dataset used in this project can be downloaded from the following link: [Download wtb_features.csv from Dropbox](https://www.dropbox.com/scl/fi/rrzuxzsz7n4u3uk69yw58/wtb_features.csv?rlkey=h8qggia4yytos2c0x6y17tj74&st=hlhywowd&dl=0)
-
-Once downloaded, place the file inside the `data/processed/` folder before running any scripts. The preprocessing script (`prepare_dataset.py`) expects the dataset to be available in that location.
-
-## How to Run
-
-1. **Prepare the environment**  
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Preprocess the dataset**
-   Converts the processed CSV data to `.arff` format with feature normalization.
-
-   ```bash
-   python prepare_dataset.py
-   ```
-
-3. **Run S2RMS experiments**
-
-   ```bash
-   python run_experiment.py
-   ```
-
-4. **Train baselines (ElasticNet & XGBoost)**
-   See the corresponding scripts or notebooks in `notebooks/`.
-
-
-
-## Results
-
-* S2RMS is evaluated at **1%, 5%, and 10% labeled data**.
-* The same 2000-instance subset is used across all models for fair comparison.
-* Evaluation metric: **Root Mean Squared Error (RMSE)** on the remaining dataset.
-
-See `notebooks/results_analysis.ipynb` for charts and result tables.
+@article{petkovic2023clusplus,
+  title={CLUSplus: A decision tree-based framework for predicting structured outputs},
+  author={Petkovi{\'c}, Matej and Levati{\'c}, Jurica and Kocev, Dragi and Breskvar, Martin and D{\v{z}}eroski, Sa{\v{s}}o},
+  journal={SoftwareX},
+  volume={24},
+  pages={101526},
+  year={2023},
+  publisher={Elsevier}
+}
+```

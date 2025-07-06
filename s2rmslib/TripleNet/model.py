@@ -4,7 +4,6 @@ import torch as th
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 class SiameseNetwork(nn.Module):
     def __init__(self, **config):
         super(SiameseNetwork, self).__init__()
@@ -38,74 +37,85 @@ class SiameseNetwork(nn.Module):
             output = self.forward_once(input1.float())
             return output
 
-
 class PreTripletDataset:
     def __init__(self, training_labeled_path, training_pairs_path):
         self.labeled_data = pd.read_csv(training_labeled_path)
         self.pairs = pd.read_csv(training_pairs_path)
 
-    def __getitem__(self, index):
         target_label = self.labeled_data.columns[-1]
         labeled_data = self.labeled_data.drop(columns=[target_label])
-        labeled_sample = labeled_data.iloc[index]
-        labeled_sample_idx = labeled_data['index'][index]
+        self.features = labeled_data.drop(columns=['index']).to_numpy().astype(np.float32)
+        self.indices = labeled_data['index'].to_numpy()
 
-        element_list = self.pairs[
-            (self.pairs['Sample1'] == labeled_sample_idx) | (self.pairs['Sample2'] == labeled_sample_idx)]
-        sorted_element_list = element_list.sort_values(by='Difference', ascending=False)
+        # Mappa per accesso rapido agli indici
+        self.index_to_row = {idx: i for i, idx in enumerate(self.indices)}
 
-        indices_pos = sorted_element_list.iloc[0]['Sample2'] if sorted_element_list.iloc[0][
-                                                                    'Sample1'] == labeled_sample_idx else \
-            sorted_element_list.iloc[0]['Sample1']
-        indices_neg = sorted_element_list.iloc[-1]['Sample2'] if sorted_element_list.iloc[-1][
-                                                                     'Sample1'] == labeled_sample_idx else \
-            sorted_element_list.iloc[-1]['Sample1']
+        self.triplets = []
+        for i, anchor_idx in enumerate(self.indices):
+            element_list = self.pairs[
+                (self.pairs['Sample1'] == anchor_idx) | (self.pairs['Sample2'] == anchor_idx)]
+            if element_list.empty:
+                continue
+            sorted_element_list = element_list.sort_values(by='Difference', ascending=False)
 
-        anchor = np.delete(labeled_sample.to_numpy().astype(float), 0)
-        positive = np.delete(labeled_data[labeled_data['index'] == indices_pos].to_numpy().astype(float), 0)
-        negative = np.delete(labeled_data[labeled_data['index'] == indices_neg].to_numpy().astype(float), 0)
+            pos_idx = sorted_element_list.iloc[0]['Sample2'] if sorted_element_list.iloc[0]['Sample1'] == anchor_idx else sorted_element_list.iloc[0]['Sample1']
+            neg_idx = sorted_element_list.iloc[-1]['Sample2'] if sorted_element_list.iloc[-1]['Sample1'] == anchor_idx else sorted_element_list.iloc[-1]['Sample1']
 
-        return anchor, positive, negative
+            try:
+                anchor_feat = self.features[i]
+                positive_feat = self.features[self.index_to_row[pos_idx]]
+                negative_feat = self.features[self.index_to_row[neg_idx]]
+                self.triplets.append((anchor_feat, positive_feat, negative_feat))
+            except KeyError:
+                continue
 
     def __len__(self):
-        return len(self.labeled_data)
+        return len(self.triplets)
+
+    def __getitem__(self, idx):
+        a, p, n = self.triplets[idx]
+        return (th.tensor(a, dtype=th.float32),
+                th.tensor(p, dtype=th.float32),
+                th.tensor(n, dtype=th.float32))
 
 
 class TripletDataset:
-    def __init__(self, training_labeled=None, training_unlabeled=None, model=None, number_pos_neg=5):
+    def __init__(self, training_labeled, training_unlabeled, model, number_pos_neg=5, device=None):
         self.labeled_data = pd.read_csv(training_labeled)
         self.unlabeled_data = pd.read_csv(training_unlabeled)
         self.model = model
         self.number_pos_neg = number_pos_neg
-
-    def __getitem__(self, index):
-        device = th.device('cuda:0' if th.cuda.is_available() else 'cpu')
+        self.device = device if device else ('cuda' if th.cuda.is_available() else 'cpu')
+        self.model.to(self.device)
         self.model.eval()
 
-        labeled_data = self.labeled_data.iloc[:, 1:-1]
-        unlabeled_data = self.unlabeled_data.iloc[:, 1:-1]
+        # Preprocessing features
+        labeled_features = th.from_numpy(self.labeled_data.iloc[:, 1:-1].to_numpy().astype(np.float32)).to(self.device)
+        unlabeled_features = th.from_numpy(self.unlabeled_data.iloc[:, 1:-1].to_numpy().astype(np.float32)).to(self.device)
 
-        cur_lab = labeled_data.loc[index]
-        input_tensor_1 = th.from_numpy(np.asarray(cur_lab)).reshape(1, len(cur_lab)).to(device)
+        with th.no_grad():
+            labeled_latent = self.model.forward_once(labeled_features)
+            unlabeled_latent = self.model.forward_once(unlabeled_features)
 
-        list_of_distances = []
-        for i in unlabeled_data.index.values.tolist():
-            input_tensor_2 = th.from_numpy(np.asarray(unlabeled_data.loc[i])).reshape(1, len(
-                unlabeled_data.loc[i])).to(device)
-            with th.no_grad():
-                output_1, output_2 = self.model(input_tensor_1, input_tensor_2, True)
-                difference = F.pairwise_distance(output_1, output_2).cpu().detach().numpy()[0]
-            list_of_distances.append(float(difference))
+        # Calcolo distanze pairwise tra etichettati e non etichettati
+        diff = labeled_latent.unsqueeze(1) - unlabeled_latent.unsqueeze(0)  # N x M x D
+        distances = th.norm(diff, dim=2)  # N x M
 
-        sorted_res = np.argsort(list_of_distances)
-        indices_pos, indices_neg = sorted_res[0: self.number_pos_neg], sorted_res[-self.number_pos_neg:]
+        # Indici positivi (min distanza) e negativi (max distanza)
+        self.pos_indices = distances.topk(self.number_pos_neg, largest=False).indices.cpu().numpy()
+        self.neg_indices = distances.topk(self.number_pos_neg, largest=True).indices.cpu().numpy()
 
-        np.tile(cur_lab.to_numpy().astype(float), (5, 1))
-        anchor = np.tile(cur_lab.to_numpy().astype(float), (self.number_pos_neg, 1))
-        positive = unlabeled_data.iloc[indices_pos].to_numpy().astype(float)
-        negative = unlabeled_data.iloc[indices_neg].to_numpy().astype(float)
-
-        return anchor, positive, negative
+        self.labeled_features_np = labeled_features.cpu().numpy()
+        self.unlabeled_features_np = unlabeled_features.cpu().numpy()
 
     def __len__(self):
         return len(self.labeled_data)
+
+    def __getitem__(self, idx):
+        anchor = np.tile(self.labeled_features_np[idx], (self.number_pos_neg, 1))
+        positive = self.unlabeled_features_np[self.pos_indices[idx]]
+        negative = self.unlabeled_features_np[self.neg_indices[idx]]
+
+        return (th.tensor(anchor, dtype=th.float32),
+                th.tensor(positive, dtype=th.float32),
+                th.tensor(negative, dtype=th.float32))

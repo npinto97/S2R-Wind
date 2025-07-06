@@ -1,0 +1,1040 @@
+Clus v2.12.8
+Software for Predictive Clustering
+
+Copyright (C) 2007 - 2025
+   Katholieke Universiteit Leuven, Leuven, Belgium
+   Jozef Stefan Institute, Ljubljana, Slovenia
+
+This program is free software and comes with ABSOLUTELY NO
+WARRANTY. You are welcome to redistribute it under certain
+conditions. Type 'clus -copying' for distribution details.
+
+[2025-07-06 00:53:01] [INFO] Loading 'fold6_ssl_10' 
+[2025-07-06 00:53:01] [INFO] Reading ARFF Header 
+[2025-07-06 00:53:01] [INFO] Reading CSV Data 
+[2025-07-06 00:53:01] [INFO] Found 23040 rows 
+[2025-07-06 00:53:01] [INFO] Space required by nominal attributes: 0 bytes/tuple regular, 0 bytes/tuple bitwise 
+[2025-07-06 00:53:01] [INFO] Clustering attributes check ==> #nominal: 0 #numeric: 20 
+[2025-07-06 00:53:01] [INFO] It does not make any sense to force running the internal XVAL and not saving the score. Just saying. 
+[2025-07-06 00:53:01] [INFO] Has missing values: true 
+[2025-07-06 00:53:01] [INFO] Time: 06. 07. 2025 00:53:01 
+[2025-07-06 00:53:01] [INFO] Run: 01 
+[2025-07-06 00:53:01] [INFO] SSL Method: PCT 
+[2025-07-06 00:53:01] [INFO] Base method: 
+[2025-07-06 00:53:01] [INFO] Ensemble Classifier 
+[2025-07-06 00:53:01] [INFO] Inducing fold 0 for weight 0.000000 
+[2025-07-06 00:53:02] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:02] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:02] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:02] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:02] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:02] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:02] [INFO] Bag: 1 
+[2025-07-06 00:53:02] [INFO] Bag: 2 
+[2025-07-06 00:53:02] [INFO] Bag: 3 
+[2025-07-06 00:53:02] [INFO] Bag: 4 
+[2025-07-06 00:53:02] [INFO] Bag: 5 
+[2025-07-06 00:53:03] [INFO] Bag: 6 
+[2025-07-06 00:53:03] [INFO] Bag: 7 
+[2025-07-06 00:53:03] [INFO] Bag: 8 
+[2025-07-06 00:53:03] [INFO] Bag: 9 
+[2025-07-06 00:53:03] [INFO] Bag: 10 
+[2025-07-06 00:53:03] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:03] [INFO] Inducing fold 1 for weight 0.000000 
+[2025-07-06 00:53:03] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:03] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:03] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:03] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:03] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:03] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:03] [INFO] Bag: 1 
+[2025-07-06 00:53:04] [INFO] Bag: 2 
+[2025-07-06 00:53:04] [INFO] Bag: 3 
+[2025-07-06 00:53:04] [INFO] Bag: 4 
+[2025-07-06 00:53:04] [INFO] Bag: 5 
+[2025-07-06 00:53:04] [INFO] Bag: 6 
+[2025-07-06 00:53:04] [INFO] Bag: 7 
+[2025-07-06 00:53:04] [INFO] Bag: 8 
+[2025-07-06 00:53:05] [INFO] Bag: 9 
+[2025-07-06 00:53:05] [INFO] Bag: 10 
+[2025-07-06 00:53:05] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:05] [INFO] Inducing fold 2 for weight 0.000000 
+[2025-07-06 00:53:05] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:05] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:05] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:05] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:05] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:05] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:05] [INFO] Bag: 1 
+[2025-07-06 00:53:05] [INFO] Bag: 2 
+[2025-07-06 00:53:05] [INFO] Bag: 3 
+[2025-07-06 00:53:05] [INFO] Bag: 4 
+[2025-07-06 00:53:05] [INFO] Bag: 5 
+[2025-07-06 00:53:06] [INFO] Bag: 6 
+[2025-07-06 00:53:06] [INFO] Bag: 7 
+[2025-07-06 00:53:06] [INFO] Bag: 8 
+[2025-07-06 00:53:06] [INFO] Bag: 9 
+[2025-07-06 00:53:06] [INFO] Bag: 10 
+[2025-07-06 00:53:06] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:06] [INFO] Inducing fold 3 for weight 0.000000 
+[2025-07-06 00:53:06] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:06] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:06] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:06] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:06] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:06] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:06] [INFO] Bag: 1 
+[2025-07-06 00:53:07] [INFO] Bag: 2 
+[2025-07-06 00:53:07] [INFO] Bag: 3 
+[2025-07-06 00:53:07] [INFO] Bag: 4 
+[2025-07-06 00:53:07] [INFO] Bag: 5 
+[2025-07-06 00:53:07] [INFO] Bag: 6 
+[2025-07-06 00:53:07] [INFO] Bag: 7 
+[2025-07-06 00:53:07] [INFO] Bag: 8 
+[2025-07-06 00:53:08] [INFO] Bag: 9 
+[2025-07-06 00:53:08] [INFO] Bag: 10 
+[2025-07-06 00:53:08] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:08] [INFO] Inducing fold 4 for weight 0.000000 
+[2025-07-06 00:53:08] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:08] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:08] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:08] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:08] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:08] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:08] [INFO] Bag: 1 
+[2025-07-06 00:53:08] [INFO] Bag: 2 
+[2025-07-06 00:53:08] [INFO] Bag: 3 
+[2025-07-06 00:53:08] [INFO] Bag: 4 
+[2025-07-06 00:53:08] [INFO] Bag: 5 
+[2025-07-06 00:53:09] [INFO] Bag: 6 
+[2025-07-06 00:53:09] [INFO] Bag: 7 
+[2025-07-06 00:53:09] [INFO] Bag: 8 
+[2025-07-06 00:53:09] [INFO] Bag: 9 
+[2025-07-06 00:53:09] [INFO] Bag: 10 
+[2025-07-06 00:53:09] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:09] [INFO] Inducing fold 0 for weight 0.100000 
+[2025-07-06 00:53:09] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:09] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:09] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:09] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:09] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:09] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:09] [INFO] Bag: 1 
+[2025-07-06 00:53:10] [INFO] Bag: 2 
+[2025-07-06 00:53:10] [INFO] Bag: 3 
+[2025-07-06 00:53:10] [INFO] Bag: 4 
+[2025-07-06 00:53:10] [INFO] Bag: 5 
+[2025-07-06 00:53:10] [INFO] Bag: 6 
+[2025-07-06 00:53:10] [INFO] Bag: 7 
+[2025-07-06 00:53:10] [INFO] Bag: 8 
+[2025-07-06 00:53:10] [INFO] Bag: 9 
+[2025-07-06 00:53:11] [INFO] Bag: 10 
+[2025-07-06 00:53:11] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:11] [INFO] Inducing fold 1 for weight 0.100000 
+[2025-07-06 00:53:11] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:11] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:11] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:11] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:11] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:11] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:11] [INFO] Bag: 1 
+[2025-07-06 00:53:11] [INFO] Bag: 2 
+[2025-07-06 00:53:11] [INFO] Bag: 3 
+[2025-07-06 00:53:11] [INFO] Bag: 4 
+[2025-07-06 00:53:11] [INFO] Bag: 5 
+[2025-07-06 00:53:11] [INFO] Bag: 6 
+[2025-07-06 00:53:12] [INFO] Bag: 7 
+[2025-07-06 00:53:12] [INFO] Bag: 8 
+[2025-07-06 00:53:12] [INFO] Bag: 9 
+[2025-07-06 00:53:12] [INFO] Bag: 10 
+[2025-07-06 00:53:12] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:12] [INFO] Inducing fold 2 for weight 0.100000 
+[2025-07-06 00:53:12] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:12] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:12] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:12] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:12] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:12] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:12] [INFO] Bag: 1 
+[2025-07-06 00:53:12] [INFO] Bag: 2 
+[2025-07-06 00:53:13] [INFO] Bag: 3 
+[2025-07-06 00:53:13] [INFO] Bag: 4 
+[2025-07-06 00:53:13] [INFO] Bag: 5 
+[2025-07-06 00:53:13] [INFO] Bag: 6 
+[2025-07-06 00:53:13] [INFO] Bag: 7 
+[2025-07-06 00:53:13] [INFO] Bag: 8 
+[2025-07-06 00:53:13] [INFO] Bag: 9 
+[2025-07-06 00:53:14] [INFO] Bag: 10 
+[2025-07-06 00:53:14] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:14] [INFO] Inducing fold 3 for weight 0.100000 
+[2025-07-06 00:53:14] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:14] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:14] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:14] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:14] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:14] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:14] [INFO] Bag: 1 
+[2025-07-06 00:53:14] [INFO] Bag: 2 
+[2025-07-06 00:53:14] [INFO] Bag: 3 
+[2025-07-06 00:53:14] [INFO] Bag: 4 
+[2025-07-06 00:53:14] [INFO] Bag: 5 
+[2025-07-06 00:53:15] [INFO] Bag: 6 
+[2025-07-06 00:53:15] [INFO] Bag: 7 
+[2025-07-06 00:53:15] [INFO] Bag: 8 
+[2025-07-06 00:53:15] [INFO] Bag: 9 
+[2025-07-06 00:53:15] [INFO] Bag: 10 
+[2025-07-06 00:53:15] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:15] [INFO] Inducing fold 4 for weight 0.100000 
+[2025-07-06 00:53:15] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:15] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:15] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:15] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:15] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:15] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:15] [INFO] Bag: 1 
+[2025-07-06 00:53:15] [INFO] Bag: 2 
+[2025-07-06 00:53:16] [INFO] Bag: 3 
+[2025-07-06 00:53:16] [INFO] Bag: 4 
+[2025-07-06 00:53:16] [INFO] Bag: 5 
+[2025-07-06 00:53:16] [INFO] Bag: 6 
+[2025-07-06 00:53:16] [INFO] Bag: 7 
+[2025-07-06 00:53:16] [INFO] Bag: 8 
+[2025-07-06 00:53:16] [INFO] Bag: 9 
+[2025-07-06 00:53:17] [INFO] Bag: 10 
+[2025-07-06 00:53:17] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:17] [INFO] Inducing fold 0 for weight 0.200000 
+[2025-07-06 00:53:17] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:17] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:17] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:17] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:17] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:17] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:17] [INFO] Bag: 1 
+[2025-07-06 00:53:17] [INFO] Bag: 2 
+[2025-07-06 00:53:17] [INFO] Bag: 3 
+[2025-07-06 00:53:17] [INFO] Bag: 4 
+[2025-07-06 00:53:17] [INFO] Bag: 5 
+[2025-07-06 00:53:17] [INFO] Bag: 6 
+[2025-07-06 00:53:18] [INFO] Bag: 7 
+[2025-07-06 00:53:18] [INFO] Bag: 8 
+[2025-07-06 00:53:18] [INFO] Bag: 9 
+[2025-07-06 00:53:18] [INFO] Bag: 10 
+[2025-07-06 00:53:18] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:18] [INFO] Inducing fold 1 for weight 0.200000 
+[2025-07-06 00:53:18] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:18] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:18] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:18] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:18] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:18] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:18] [INFO] Bag: 1 
+[2025-07-06 00:53:18] [INFO] Bag: 2 
+[2025-07-06 00:53:18] [INFO] Bag: 3 
+[2025-07-06 00:53:19] [INFO] Bag: 4 
+[2025-07-06 00:53:19] [INFO] Bag: 5 
+[2025-07-06 00:53:19] [INFO] Bag: 6 
+[2025-07-06 00:53:19] [INFO] Bag: 7 
+[2025-07-06 00:53:19] [INFO] Bag: 8 
+[2025-07-06 00:53:19] [INFO] Bag: 9 
+[2025-07-06 00:53:19] [INFO] Bag: 10 
+[2025-07-06 00:53:20] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:20] [INFO] Inducing fold 2 for weight 0.200000 
+[2025-07-06 00:53:20] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:20] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:20] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:20] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:20] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:20] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:20] [INFO] Bag: 1 
+[2025-07-06 00:53:20] [INFO] Bag: 2 
+[2025-07-06 00:53:20] [INFO] Bag: 3 
+[2025-07-06 00:53:20] [INFO] Bag: 4 
+[2025-07-06 00:53:20] [INFO] Bag: 5 
+[2025-07-06 00:53:20] [INFO] Bag: 6 
+[2025-07-06 00:53:20] [INFO] Bag: 7 
+[2025-07-06 00:53:21] [INFO] Bag: 8 
+[2025-07-06 00:53:21] [INFO] Bag: 9 
+[2025-07-06 00:53:21] [INFO] Bag: 10 
+[2025-07-06 00:53:21] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:21] [INFO] Inducing fold 3 for weight 0.200000 
+[2025-07-06 00:53:21] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:21] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:21] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:21] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:21] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:21] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:21] [INFO] Bag: 1 
+[2025-07-06 00:53:21] [INFO] Bag: 2 
+[2025-07-06 00:53:21] [INFO] Bag: 3 
+[2025-07-06 00:53:21] [INFO] Bag: 4 
+[2025-07-06 00:53:22] [INFO] Bag: 5 
+[2025-07-06 00:53:22] [INFO] Bag: 6 
+[2025-07-06 00:53:22] [INFO] Bag: 7 
+[2025-07-06 00:53:22] [INFO] Bag: 8 
+[2025-07-06 00:53:22] [INFO] Bag: 9 
+[2025-07-06 00:53:22] [INFO] Bag: 10 
+[2025-07-06 00:53:22] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:22] [INFO] Inducing fold 4 for weight 0.200000 
+[2025-07-06 00:53:23] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:23] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:23] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:23] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:23] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:23] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:23] [INFO] Bag: 1 
+[2025-07-06 00:53:23] [INFO] Bag: 2 
+[2025-07-06 00:53:23] [INFO] Bag: 3 
+[2025-07-06 00:53:23] [INFO] Bag: 4 
+[2025-07-06 00:53:23] [INFO] Bag: 5 
+[2025-07-06 00:53:23] [INFO] Bag: 6 
+[2025-07-06 00:53:24] [INFO] Bag: 7 
+[2025-07-06 00:53:24] [INFO] Bag: 8 
+[2025-07-06 00:53:24] [INFO] Bag: 9 
+[2025-07-06 00:53:24] [INFO] Bag: 10 
+[2025-07-06 00:53:24] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:24] [INFO] Inducing fold 0 for weight 0.300000 
+[2025-07-06 00:53:24] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:24] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:24] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:24] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:24] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:24] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:24] [INFO] Bag: 1 
+[2025-07-06 00:53:24] [INFO] Bag: 2 
+[2025-07-06 00:53:25] [INFO] Bag: 3 
+[2025-07-06 00:53:25] [INFO] Bag: 4 
+[2025-07-06 00:53:25] [INFO] Bag: 5 
+[2025-07-06 00:53:25] [INFO] Bag: 6 
+[2025-07-06 00:53:25] [INFO] Bag: 7 
+[2025-07-06 00:53:25] [INFO] Bag: 8 
+[2025-07-06 00:53:25] [INFO] Bag: 9 
+[2025-07-06 00:53:26] [INFO] Bag: 10 
+[2025-07-06 00:53:26] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:26] [INFO] Inducing fold 1 for weight 0.300000 
+[2025-07-06 00:53:26] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:26] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:26] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:26] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:26] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:26] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:26] [INFO] Bag: 1 
+[2025-07-06 00:53:26] [INFO] Bag: 2 
+[2025-07-06 00:53:26] [INFO] Bag: 3 
+[2025-07-06 00:53:26] [INFO] Bag: 4 
+[2025-07-06 00:53:26] [INFO] Bag: 5 
+[2025-07-06 00:53:26] [INFO] Bag: 6 
+[2025-07-06 00:53:27] [INFO] Bag: 7 
+[2025-07-06 00:53:27] [INFO] Bag: 8 
+[2025-07-06 00:53:27] [INFO] Bag: 9 
+[2025-07-06 00:53:27] [INFO] Bag: 10 
+[2025-07-06 00:53:27] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:27] [INFO] Inducing fold 2 for weight 0.300000 
+[2025-07-06 00:53:27] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:27] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:27] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:27] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:27] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:27] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:27] [INFO] Bag: 1 
+[2025-07-06 00:53:27] [INFO] Bag: 2 
+[2025-07-06 00:53:27] [INFO] Bag: 3 
+[2025-07-06 00:53:28] [INFO] Bag: 4 
+[2025-07-06 00:53:28] [INFO] Bag: 5 
+[2025-07-06 00:53:28] [INFO] Bag: 6 
+[2025-07-06 00:53:28] [INFO] Bag: 7 
+[2025-07-06 00:53:28] [INFO] Bag: 8 
+[2025-07-06 00:53:28] [INFO] Bag: 9 
+[2025-07-06 00:53:28] [INFO] Bag: 10 
+[2025-07-06 00:53:29] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:29] [INFO] Inducing fold 3 for weight 0.300000 
+[2025-07-06 00:53:29] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:29] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:29] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:29] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:29] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:29] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:29] [INFO] Bag: 1 
+[2025-07-06 00:53:29] [INFO] Bag: 2 
+[2025-07-06 00:53:29] [INFO] Bag: 3 
+[2025-07-06 00:53:29] [INFO] Bag: 4 
+[2025-07-06 00:53:29] [INFO] Bag: 5 
+[2025-07-06 00:53:29] [INFO] Bag: 6 
+[2025-07-06 00:53:29] [INFO] Bag: 7 
+[2025-07-06 00:53:30] [INFO] Bag: 8 
+[2025-07-06 00:53:30] [INFO] Bag: 9 
+[2025-07-06 00:53:30] [INFO] Bag: 10 
+[2025-07-06 00:53:30] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:30] [INFO] Inducing fold 4 for weight 0.300000 
+[2025-07-06 00:53:30] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:30] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:30] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:30] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:30] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:30] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:30] [INFO] Bag: 1 
+[2025-07-06 00:53:30] [INFO] Bag: 2 
+[2025-07-06 00:53:30] [INFO] Bag: 3 
+[2025-07-06 00:53:30] [INFO] Bag: 4 
+[2025-07-06 00:53:31] [INFO] Bag: 5 
+[2025-07-06 00:53:31] [INFO] Bag: 6 
+[2025-07-06 00:53:31] [INFO] Bag: 7 
+[2025-07-06 00:53:31] [INFO] Bag: 8 
+[2025-07-06 00:53:31] [INFO] Bag: 9 
+[2025-07-06 00:53:31] [INFO] Bag: 10 
+[2025-07-06 00:53:31] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:31] [INFO] Inducing fold 0 for weight 0.400000 
+[2025-07-06 00:53:31] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:31] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:31] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:31] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:31] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:31] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:31] [INFO] Bag: 1 
+[2025-07-06 00:53:32] [INFO] Bag: 2 
+[2025-07-06 00:53:32] [INFO] Bag: 3 
+[2025-07-06 00:53:32] [INFO] Bag: 4 
+[2025-07-06 00:53:32] [INFO] Bag: 5 
+[2025-07-06 00:53:32] [INFO] Bag: 6 
+[2025-07-06 00:53:32] [INFO] Bag: 7 
+[2025-07-06 00:53:32] [INFO] Bag: 8 
+[2025-07-06 00:53:33] [INFO] Bag: 9 
+[2025-07-06 00:53:33] [INFO] Bag: 10 
+[2025-07-06 00:53:33] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:33] [INFO] Inducing fold 1 for weight 0.400000 
+[2025-07-06 00:53:33] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:33] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:33] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:33] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:33] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:33] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:33] [INFO] Bag: 1 
+[2025-07-06 00:53:33] [INFO] Bag: 2 
+[2025-07-06 00:53:33] [INFO] Bag: 3 
+[2025-07-06 00:53:33] [INFO] Bag: 4 
+[2025-07-06 00:53:33] [INFO] Bag: 5 
+[2025-07-06 00:53:34] [INFO] Bag: 6 
+[2025-07-06 00:53:34] [INFO] Bag: 7 
+[2025-07-06 00:53:34] [INFO] Bag: 8 
+[2025-07-06 00:53:34] [INFO] Bag: 9 
+[2025-07-06 00:53:34] [INFO] Bag: 10 
+[2025-07-06 00:53:34] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:34] [INFO] Inducing fold 2 for weight 0.400000 
+[2025-07-06 00:53:34] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:34] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:34] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:34] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:34] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:34] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:34] [INFO] Bag: 1 
+[2025-07-06 00:53:35] [INFO] Bag: 2 
+[2025-07-06 00:53:35] [INFO] Bag: 3 
+[2025-07-06 00:53:35] [INFO] Bag: 4 
+[2025-07-06 00:53:35] [INFO] Bag: 5 
+[2025-07-06 00:53:35] [INFO] Bag: 6 
+[2025-07-06 00:53:35] [INFO] Bag: 7 
+[2025-07-06 00:53:35] [INFO] Bag: 8 
+[2025-07-06 00:53:35] [INFO] Bag: 9 
+[2025-07-06 00:53:36] [INFO] Bag: 10 
+[2025-07-06 00:53:36] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:36] [INFO] Inducing fold 3 for weight 0.400000 
+[2025-07-06 00:53:36] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:36] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:36] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:36] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:36] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:36] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:36] [INFO] Bag: 1 
+[2025-07-06 00:53:36] [INFO] Bag: 2 
+[2025-07-06 00:53:36] [INFO] Bag: 3 
+[2025-07-06 00:53:36] [INFO] Bag: 4 
+[2025-07-06 00:53:36] [INFO] Bag: 5 
+[2025-07-06 00:53:37] [INFO] Bag: 6 
+[2025-07-06 00:53:37] [INFO] Bag: 7 
+[2025-07-06 00:53:37] [INFO] Bag: 8 
+[2025-07-06 00:53:37] [INFO] Bag: 9 
+[2025-07-06 00:53:37] [INFO] Bag: 10 
+[2025-07-06 00:53:37] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:37] [INFO] Inducing fold 4 for weight 0.400000 
+[2025-07-06 00:53:37] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:37] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:37] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:37] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:37] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:37] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:37] [INFO] Bag: 1 
+[2025-07-06 00:53:37] [INFO] Bag: 2 
+[2025-07-06 00:53:38] [INFO] Bag: 3 
+[2025-07-06 00:53:38] [INFO] Bag: 4 
+[2025-07-06 00:53:38] [INFO] Bag: 5 
+[2025-07-06 00:53:38] [INFO] Bag: 6 
+[2025-07-06 00:53:38] [INFO] Bag: 7 
+[2025-07-06 00:53:38] [INFO] Bag: 8 
+[2025-07-06 00:53:38] [INFO] Bag: 9 
+[2025-07-06 00:53:38] [INFO] Bag: 10 
+[2025-07-06 00:53:39] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:39] [INFO] Inducing fold 0 for weight 0.500000 
+[2025-07-06 00:53:39] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:39] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:39] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:39] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:39] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:39] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:39] [INFO] Bag: 1 
+[2025-07-06 00:53:39] [INFO] Bag: 2 
+[2025-07-06 00:53:39] [INFO] Bag: 3 
+[2025-07-06 00:53:39] [INFO] Bag: 4 
+[2025-07-06 00:53:39] [INFO] Bag: 5 
+[2025-07-06 00:53:39] [INFO] Bag: 6 
+[2025-07-06 00:53:40] [INFO] Bag: 7 
+[2025-07-06 00:53:40] [INFO] Bag: 8 
+[2025-07-06 00:53:40] [INFO] Bag: 9 
+[2025-07-06 00:53:40] [INFO] Bag: 10 
+[2025-07-06 00:53:40] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:40] [INFO] Inducing fold 1 for weight 0.500000 
+[2025-07-06 00:53:40] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:40] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:40] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:40] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:40] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:40] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:40] [INFO] Bag: 1 
+[2025-07-06 00:53:40] [INFO] Bag: 2 
+[2025-07-06 00:53:40] [INFO] Bag: 3 
+[2025-07-06 00:53:41] [INFO] Bag: 4 
+[2025-07-06 00:53:41] [INFO] Bag: 5 
+[2025-07-06 00:53:41] [INFO] Bag: 6 
+[2025-07-06 00:53:41] [INFO] Bag: 7 
+[2025-07-06 00:53:41] [INFO] Bag: 8 
+[2025-07-06 00:53:41] [INFO] Bag: 9 
+[2025-07-06 00:53:41] [INFO] Bag: 10 
+[2025-07-06 00:53:41] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:42] [INFO] Inducing fold 2 for weight 0.500000 
+[2025-07-06 00:53:42] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:42] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:42] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:42] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:42] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:42] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:42] [INFO] Bag: 1 
+[2025-07-06 00:53:42] [INFO] Bag: 2 
+[2025-07-06 00:53:42] [INFO] Bag: 3 
+[2025-07-06 00:53:42] [INFO] Bag: 4 
+[2025-07-06 00:53:42] [INFO] Bag: 5 
+[2025-07-06 00:53:42] [INFO] Bag: 6 
+[2025-07-06 00:53:42] [INFO] Bag: 7 
+[2025-07-06 00:53:43] [INFO] Bag: 8 
+[2025-07-06 00:53:43] [INFO] Bag: 9 
+[2025-07-06 00:53:43] [INFO] Bag: 10 
+[2025-07-06 00:53:43] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:43] [INFO] Inducing fold 3 for weight 0.500000 
+[2025-07-06 00:53:43] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:43] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:43] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:43] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:43] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:43] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:43] [INFO] Bag: 1 
+[2025-07-06 00:53:43] [INFO] Bag: 2 
+[2025-07-06 00:53:43] [INFO] Bag: 3 
+[2025-07-06 00:53:43] [INFO] Bag: 4 
+[2025-07-06 00:53:44] [INFO] Bag: 5 
+[2025-07-06 00:53:44] [INFO] Bag: 6 
+[2025-07-06 00:53:44] [INFO] Bag: 7 
+[2025-07-06 00:53:44] [INFO] Bag: 8 
+[2025-07-06 00:53:44] [INFO] Bag: 9 
+[2025-07-06 00:53:44] [INFO] Bag: 10 
+[2025-07-06 00:53:44] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:44] [INFO] Inducing fold 4 for weight 0.500000 
+[2025-07-06 00:53:45] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:45] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:45] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:45] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:45] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:45] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:45] [INFO] Bag: 1 
+[2025-07-06 00:53:45] [INFO] Bag: 2 
+[2025-07-06 00:53:45] [INFO] Bag: 3 
+[2025-07-06 00:53:45] [INFO] Bag: 4 
+[2025-07-06 00:53:45] [INFO] Bag: 5 
+[2025-07-06 00:53:45] [INFO] Bag: 6 
+[2025-07-06 00:53:45] [INFO] Bag: 7 
+[2025-07-06 00:53:45] [INFO] Bag: 8 
+[2025-07-06 00:53:46] [INFO] Bag: 9 
+[2025-07-06 00:53:46] [INFO] Bag: 10 
+[2025-07-06 00:53:46] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:46] [INFO] Inducing fold 0 for weight 0.600000 
+[2025-07-06 00:53:46] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:46] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:46] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:46] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:46] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:46] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:46] [INFO] Bag: 1 
+[2025-07-06 00:53:46] [INFO] Bag: 2 
+[2025-07-06 00:53:46] [INFO] Bag: 3 
+[2025-07-06 00:53:46] [INFO] Bag: 4 
+[2025-07-06 00:53:47] [INFO] Bag: 5 
+[2025-07-06 00:53:47] [INFO] Bag: 6 
+[2025-07-06 00:53:47] [INFO] Bag: 7 
+[2025-07-06 00:53:47] [INFO] Bag: 8 
+[2025-07-06 00:53:47] [INFO] Bag: 9 
+[2025-07-06 00:53:47] [INFO] Bag: 10 
+[2025-07-06 00:53:47] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:47] [INFO] Inducing fold 1 for weight 0.600000 
+[2025-07-06 00:53:47] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:47] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:47] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:47] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:47] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:47] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:47] [INFO] Bag: 1 
+[2025-07-06 00:53:48] [INFO] Bag: 2 
+[2025-07-06 00:53:48] [INFO] Bag: 3 
+[2025-07-06 00:53:48] [INFO] Bag: 4 
+[2025-07-06 00:53:48] [INFO] Bag: 5 
+[2025-07-06 00:53:48] [INFO] Bag: 6 
+[2025-07-06 00:53:48] [INFO] Bag: 7 
+[2025-07-06 00:53:48] [INFO] Bag: 8 
+[2025-07-06 00:53:49] [INFO] Bag: 9 
+[2025-07-06 00:53:49] [INFO] Bag: 10 
+[2025-07-06 00:53:49] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:49] [INFO] Inducing fold 2 for weight 0.600000 
+[2025-07-06 00:53:49] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:49] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:49] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:49] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:49] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:49] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:49] [INFO] Bag: 1 
+[2025-07-06 00:53:49] [INFO] Bag: 2 
+[2025-07-06 00:53:49] [INFO] Bag: 3 
+[2025-07-06 00:53:49] [INFO] Bag: 4 
+[2025-07-06 00:53:49] [INFO] Bag: 5 
+[2025-07-06 00:53:50] [INFO] Bag: 6 
+[2025-07-06 00:53:50] [INFO] Bag: 7 
+[2025-07-06 00:53:50] [INFO] Bag: 8 
+[2025-07-06 00:53:50] [INFO] Bag: 9 
+[2025-07-06 00:53:50] [INFO] Bag: 10 
+[2025-07-06 00:53:50] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:50] [INFO] Inducing fold 3 for weight 0.600000 
+[2025-07-06 00:53:50] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:50] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:50] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:50] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:50] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:50] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:50] [INFO] Bag: 1 
+[2025-07-06 00:53:51] [INFO] Bag: 2 
+[2025-07-06 00:53:51] [INFO] Bag: 3 
+[2025-07-06 00:53:51] [INFO] Bag: 4 
+[2025-07-06 00:53:51] [INFO] Bag: 5 
+[2025-07-06 00:53:51] [INFO] Bag: 6 
+[2025-07-06 00:53:51] [INFO] Bag: 7 
+[2025-07-06 00:53:51] [INFO] Bag: 8 
+[2025-07-06 00:53:51] [INFO] Bag: 9 
+[2025-07-06 00:53:52] [INFO] Bag: 10 
+[2025-07-06 00:53:52] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:52] [INFO] Inducing fold 4 for weight 0.600000 
+[2025-07-06 00:53:52] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:52] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:52] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:52] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:52] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:52] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:52] [INFO] Bag: 1 
+[2025-07-06 00:53:52] [INFO] Bag: 2 
+[2025-07-06 00:53:52] [INFO] Bag: 3 
+[2025-07-06 00:53:52] [INFO] Bag: 4 
+[2025-07-06 00:53:52] [INFO] Bag: 5 
+[2025-07-06 00:53:53] [INFO] Bag: 6 
+[2025-07-06 00:53:53] [INFO] Bag: 7 
+[2025-07-06 00:53:53] [INFO] Bag: 8 
+[2025-07-06 00:53:53] [INFO] Bag: 9 
+[2025-07-06 00:53:53] [INFO] Bag: 10 
+[2025-07-06 00:53:53] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:53] [INFO] Inducing fold 0 for weight 0.700000 
+[2025-07-06 00:53:53] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:53] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:53] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:53] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:53] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:53] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:53] [INFO] Bag: 1 
+[2025-07-06 00:53:53] [INFO] Bag: 2 
+[2025-07-06 00:53:54] [INFO] Bag: 3 
+[2025-07-06 00:53:54] [INFO] Bag: 4 
+[2025-07-06 00:53:54] [INFO] Bag: 5 
+[2025-07-06 00:53:54] [INFO] Bag: 6 
+[2025-07-06 00:53:54] [INFO] Bag: 7 
+[2025-07-06 00:53:54] [INFO] Bag: 8 
+[2025-07-06 00:53:54] [INFO] Bag: 9 
+[2025-07-06 00:53:55] [INFO] Bag: 10 
+[2025-07-06 00:53:55] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:55] [INFO] Inducing fold 1 for weight 0.700000 
+[2025-07-06 00:53:55] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:55] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:55] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:55] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:55] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:55] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:55] [INFO] Bag: 1 
+[2025-07-06 00:53:55] [INFO] Bag: 2 
+[2025-07-06 00:53:55] [INFO] Bag: 3 
+[2025-07-06 00:53:55] [INFO] Bag: 4 
+[2025-07-06 00:53:55] [INFO] Bag: 5 
+[2025-07-06 00:53:56] [INFO] Bag: 6 
+[2025-07-06 00:53:56] [INFO] Bag: 7 
+[2025-07-06 00:53:56] [INFO] Bag: 8 
+[2025-07-06 00:53:56] [INFO] Bag: 9 
+[2025-07-06 00:53:56] [INFO] Bag: 10 
+[2025-07-06 00:53:56] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:56] [INFO] Inducing fold 2 for weight 0.700000 
+[2025-07-06 00:53:56] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:56] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:56] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:56] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:56] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:56] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:56] [INFO] Bag: 1 
+[2025-07-06 00:53:56] [INFO] Bag: 2 
+[2025-07-06 00:53:57] [INFO] Bag: 3 
+[2025-07-06 00:53:57] [INFO] Bag: 4 
+[2025-07-06 00:53:57] [INFO] Bag: 5 
+[2025-07-06 00:53:57] [INFO] Bag: 6 
+[2025-07-06 00:53:57] [INFO] Bag: 7 
+[2025-07-06 00:53:57] [INFO] Bag: 8 
+[2025-07-06 00:53:57] [INFO] Bag: 9 
+[2025-07-06 00:53:58] [INFO] Bag: 10 
+[2025-07-06 00:53:58] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:58] [INFO] Inducing fold 3 for weight 0.700000 
+[2025-07-06 00:53:58] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:58] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:58] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:58] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:58] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:58] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:58] [INFO] Bag: 1 
+[2025-07-06 00:53:58] [INFO] Bag: 2 
+[2025-07-06 00:53:58] [INFO] Bag: 3 
+[2025-07-06 00:53:58] [INFO] Bag: 4 
+[2025-07-06 00:53:58] [INFO] Bag: 5 
+[2025-07-06 00:53:58] [INFO] Bag: 6 
+[2025-07-06 00:53:59] [INFO] Bag: 7 
+[2025-07-06 00:53:59] [INFO] Bag: 8 
+[2025-07-06 00:53:59] [INFO] Bag: 9 
+[2025-07-06 00:53:59] [INFO] Bag: 10 
+[2025-07-06 00:53:59] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:53:59] [INFO] Inducing fold 4 for weight 0.700000 
+[2025-07-06 00:53:59] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:53:59] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:53:59] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:53:59] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:53:59] [INFO]   - Genie3: 1 
+[2025-07-06 00:53:59] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:53:59] [INFO] Bag: 1 
+[2025-07-06 00:53:59] [INFO] Bag: 2 
+[2025-07-06 00:54:00] [INFO] Bag: 3 
+[2025-07-06 00:54:00] [INFO] Bag: 4 
+[2025-07-06 00:54:00] [INFO] Bag: 5 
+[2025-07-06 00:54:00] [INFO] Bag: 6 
+[2025-07-06 00:54:00] [INFO] Bag: 7 
+[2025-07-06 00:54:00] [INFO] Bag: 8 
+[2025-07-06 00:54:00] [INFO] Bag: 9 
+[2025-07-06 00:54:01] [INFO] Bag: 10 
+[2025-07-06 00:54:01] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:01] [INFO] Inducing fold 0 for weight 0.800000 
+[2025-07-06 00:54:01] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:01] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:01] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:01] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:01] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:01] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:01] [INFO] Bag: 1 
+[2025-07-06 00:54:01] [INFO] Bag: 2 
+[2025-07-06 00:54:01] [INFO] Bag: 3 
+[2025-07-06 00:54:01] [INFO] Bag: 4 
+[2025-07-06 00:54:01] [INFO] Bag: 5 
+[2025-07-06 00:54:01] [INFO] Bag: 6 
+[2025-07-06 00:54:02] [INFO] Bag: 7 
+[2025-07-06 00:54:02] [INFO] Bag: 8 
+[2025-07-06 00:54:02] [INFO] Bag: 9 
+[2025-07-06 00:54:02] [INFO] Bag: 10 
+[2025-07-06 00:54:02] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:02] [INFO] Inducing fold 1 for weight 0.800000 
+[2025-07-06 00:54:02] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:02] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:02] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:02] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:02] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:02] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:02] [INFO] Bag: 1 
+[2025-07-06 00:54:02] [INFO] Bag: 2 
+[2025-07-06 00:54:03] [INFO] Bag: 3 
+[2025-07-06 00:54:03] [INFO] Bag: 4 
+[2025-07-06 00:54:03] [INFO] Bag: 5 
+[2025-07-06 00:54:03] [INFO] Bag: 6 
+[2025-07-06 00:54:03] [INFO] Bag: 7 
+[2025-07-06 00:54:03] [INFO] Bag: 8 
+[2025-07-06 00:54:03] [INFO] Bag: 9 
+[2025-07-06 00:54:04] [INFO] Bag: 10 
+[2025-07-06 00:54:04] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:04] [INFO] Inducing fold 2 for weight 0.800000 
+[2025-07-06 00:54:04] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:04] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:04] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:04] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:04] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:04] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:04] [INFO] Bag: 1 
+[2025-07-06 00:54:04] [INFO] Bag: 2 
+[2025-07-06 00:54:04] [INFO] Bag: 3 
+[2025-07-06 00:54:04] [INFO] Bag: 4 
+[2025-07-06 00:54:04] [INFO] Bag: 5 
+[2025-07-06 00:54:05] [INFO] Bag: 6 
+[2025-07-06 00:54:05] [INFO] Bag: 7 
+[2025-07-06 00:54:05] [INFO] Bag: 8 
+[2025-07-06 00:54:05] [INFO] Bag: 9 
+[2025-07-06 00:54:05] [INFO] Bag: 10 
+[2025-07-06 00:54:05] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:05] [INFO] Inducing fold 3 for weight 0.800000 
+[2025-07-06 00:54:05] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:05] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:05] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:05] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:05] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:05] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:05] [INFO] Bag: 1 
+[2025-07-06 00:54:05] [INFO] Bag: 2 
+[2025-07-06 00:54:06] [INFO] Bag: 3 
+[2025-07-06 00:54:06] [INFO] Bag: 4 
+[2025-07-06 00:54:06] [INFO] Bag: 5 
+[2025-07-06 00:54:06] [INFO] Bag: 6 
+[2025-07-06 00:54:06] [INFO] Bag: 7 
+[2025-07-06 00:54:06] [INFO] Bag: 8 
+[2025-07-06 00:54:06] [INFO] Bag: 9 
+[2025-07-06 00:54:07] [INFO] Bag: 10 
+[2025-07-06 00:54:07] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:07] [INFO] Inducing fold 4 for weight 0.800000 
+[2025-07-06 00:54:07] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:07] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:07] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:07] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:07] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:07] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:07] [INFO] Bag: 1 
+[2025-07-06 00:54:07] [INFO] Bag: 2 
+[2025-07-06 00:54:07] [INFO] Bag: 3 
+[2025-07-06 00:54:07] [INFO] Bag: 4 
+[2025-07-06 00:54:07] [INFO] Bag: 5 
+[2025-07-06 00:54:08] [INFO] Bag: 6 
+[2025-07-06 00:54:08] [INFO] Bag: 7 
+[2025-07-06 00:54:08] [INFO] Bag: 8 
+[2025-07-06 00:54:08] [INFO] Bag: 9 
+[2025-07-06 00:54:08] [INFO] Bag: 10 
+[2025-07-06 00:54:08] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:08] [INFO] Inducing fold 0 for weight 0.900000 
+[2025-07-06 00:54:08] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:08] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:08] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:08] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:08] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:08] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:08] [INFO] Bag: 1 
+[2025-07-06 00:54:09] [INFO] Bag: 2 
+[2025-07-06 00:54:09] [INFO] Bag: 3 
+[2025-07-06 00:54:09] [INFO] Bag: 4 
+[2025-07-06 00:54:09] [INFO] Bag: 5 
+[2025-07-06 00:54:09] [INFO] Bag: 6 
+[2025-07-06 00:54:09] [INFO] Bag: 7 
+[2025-07-06 00:54:09] [INFO] Bag: 8 
+[2025-07-06 00:54:10] [INFO] Bag: 9 
+[2025-07-06 00:54:10] [INFO] Bag: 10 
+[2025-07-06 00:54:10] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:10] [INFO] Inducing fold 1 for weight 0.900000 
+[2025-07-06 00:54:10] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:10] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:10] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:10] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:10] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:10] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:10] [INFO] Bag: 1 
+[2025-07-06 00:54:10] [INFO] Bag: 2 
+[2025-07-06 00:54:10] [INFO] Bag: 3 
+[2025-07-06 00:54:10] [INFO] Bag: 4 
+[2025-07-06 00:54:11] [INFO] Bag: 5 
+[2025-07-06 00:54:11] [INFO] Bag: 6 
+[2025-07-06 00:54:11] [INFO] Bag: 7 
+[2025-07-06 00:54:11] [INFO] Bag: 8 
+[2025-07-06 00:54:11] [INFO] Bag: 9 
+[2025-07-06 00:54:11] [INFO] Bag: 10 
+[2025-07-06 00:54:11] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:11] [INFO] Inducing fold 2 for weight 0.900000 
+[2025-07-06 00:54:12] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:12] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:12] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:12] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:12] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:12] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:12] [INFO] Bag: 1 
+[2025-07-06 00:54:12] [INFO] Bag: 2 
+[2025-07-06 00:54:12] [INFO] Bag: 3 
+[2025-07-06 00:54:12] [INFO] Bag: 4 
+[2025-07-06 00:54:12] [INFO] Bag: 5 
+[2025-07-06 00:54:12] [INFO] Bag: 6 
+[2025-07-06 00:54:12] [INFO] Bag: 7 
+[2025-07-06 00:54:13] [INFO] Bag: 8 
+[2025-07-06 00:54:13] [INFO] Bag: 9 
+[2025-07-06 00:54:13] [INFO] Bag: 10 
+[2025-07-06 00:54:13] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:13] [INFO] Inducing fold 3 for weight 0.900000 
+[2025-07-06 00:54:13] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:13] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:13] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:13] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:13] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:13] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:13] [INFO] Bag: 1 
+[2025-07-06 00:54:13] [INFO] Bag: 2 
+[2025-07-06 00:54:13] [INFO] Bag: 3 
+[2025-07-06 00:54:14] [INFO] Bag: 4 
+[2025-07-06 00:54:14] [INFO] Bag: 5 
+[2025-07-06 00:54:14] [INFO] Bag: 6 
+[2025-07-06 00:54:14] [INFO] Bag: 7 
+[2025-07-06 00:54:14] [INFO] Bag: 8 
+[2025-07-06 00:54:14] [INFO] Bag: 9 
+[2025-07-06 00:54:14] [INFO] Bag: 10 
+[2025-07-06 00:54:15] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:15] [INFO] Inducing fold 4 for weight 0.900000 
+[2025-07-06 00:54:15] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:15] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:15] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:15] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:15] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:15] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:15] [INFO] Bag: 1 
+[2025-07-06 00:54:15] [INFO] Bag: 2 
+[2025-07-06 00:54:15] [INFO] Bag: 3 
+[2025-07-06 00:54:15] [INFO] Bag: 4 
+[2025-07-06 00:54:15] [INFO] Bag: 5 
+[2025-07-06 00:54:15] [INFO] Bag: 6 
+[2025-07-06 00:54:16] [INFO] Bag: 7 
+[2025-07-06 00:54:16] [INFO] Bag: 8 
+[2025-07-06 00:54:16] [INFO] Bag: 9 
+[2025-07-06 00:54:16] [INFO] Bag: 10 
+[2025-07-06 00:54:16] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:16] [INFO] Inducing fold 0 for weight 1.000000 
+[2025-07-06 00:54:16] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:16] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:16] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:16] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:16] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:16] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:16] [INFO] Bag: 1 
+[2025-07-06 00:54:16] [INFO] Bag: 2 
+[2025-07-06 00:54:16] [INFO] Bag: 3 
+[2025-07-06 00:54:16] [INFO] Bag: 4 
+[2025-07-06 00:54:16] [INFO] Bag: 5 
+[2025-07-06 00:54:16] [INFO] Bag: 6 
+[2025-07-06 00:54:16] [INFO] Bag: 7 
+[2025-07-06 00:54:16] [INFO] Bag: 8 
+[2025-07-06 00:54:16] [INFO] Bag: 9 
+[2025-07-06 00:54:16] [INFO] Bag: 10 
+[2025-07-06 00:54:16] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:16] [INFO] Inducing fold 1 for weight 1.000000 
+[2025-07-06 00:54:16] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:16] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:16] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:16] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:16] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:16] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:16] [INFO] Bag: 1 
+[2025-07-06 00:54:16] [INFO] Bag: 2 
+[2025-07-06 00:54:16] [INFO] Bag: 3 
+[2025-07-06 00:54:16] [INFO] Bag: 4 
+[2025-07-06 00:54:16] [INFO] Bag: 5 
+[2025-07-06 00:54:16] [INFO] Bag: 6 
+[2025-07-06 00:54:16] [INFO] Bag: 7 
+[2025-07-06 00:54:16] [INFO] Bag: 8 
+[2025-07-06 00:54:16] [INFO] Bag: 9 
+[2025-07-06 00:54:16] [INFO] Bag: 10 
+[2025-07-06 00:54:16] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:16] [INFO] Inducing fold 2 for weight 1.000000 
+[2025-07-06 00:54:16] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:16] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:16] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:16] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:16] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:16] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:16] [INFO] Bag: 1 
+[2025-07-06 00:54:16] [INFO] Bag: 2 
+[2025-07-06 00:54:16] [INFO] Bag: 3 
+[2025-07-06 00:54:16] [INFO] Bag: 4 
+[2025-07-06 00:54:16] [INFO] Bag: 5 
+[2025-07-06 00:54:16] [INFO] Bag: 6 
+[2025-07-06 00:54:16] [INFO] Bag: 7 
+[2025-07-06 00:54:16] [INFO] Bag: 8 
+[2025-07-06 00:54:16] [INFO] Bag: 9 
+[2025-07-06 00:54:16] [INFO] Bag: 10 
+[2025-07-06 00:54:16] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:16] [INFO] Inducing fold 3 for weight 1.000000 
+[2025-07-06 00:54:16] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:16] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:16] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:16] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:16] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:16] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:16] [INFO] Bag: 1 
+[2025-07-06 00:54:17] [INFO] Bag: 2 
+[2025-07-06 00:54:17] [INFO] Bag: 3 
+[2025-07-06 00:54:17] [INFO] Bag: 4 
+[2025-07-06 00:54:17] [INFO] Bag: 5 
+[2025-07-06 00:54:17] [INFO] Bag: 6 
+[2025-07-06 00:54:17] [INFO] Bag: 7 
+[2025-07-06 00:54:17] [INFO] Bag: 8 
+[2025-07-06 00:54:17] [INFO] Bag: 9 
+[2025-07-06 00:54:17] [INFO] Bag: 10 
+[2025-07-06 00:54:17] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:17] [INFO] Inducing fold 4 for weight 1.000000 
+[2025-07-06 00:54:17] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:17] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:17] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:17] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:17] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:17] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:17] [INFO] Bag: 1 
+[2025-07-06 00:54:17] [INFO] Bag: 2 
+[2025-07-06 00:54:17] [INFO] Bag: 3 
+[2025-07-06 00:54:17] [INFO] Bag: 4 
+[2025-07-06 00:54:17] [INFO] Bag: 5 
+[2025-07-06 00:54:17] [INFO] Bag: 6 
+[2025-07-06 00:54:17] [INFO] Bag: 7 
+[2025-07-06 00:54:17] [INFO] Bag: 8 
+[2025-07-06 00:54:17] [INFO] Bag: 9 
+[2025-07-06 00:54:17] [INFO] Bag: 10 
+[2025-07-06 00:54:17] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:17] [INFO]  
+[2025-07-06 00:54:17] [INFO] Weight parameter w = 1.0 for SSL-PCT algorithm was selected via 5-fold internal cross validation 
+[2025-07-06 00:54:17] [INFO]  
+[2025-07-06 00:54:17] [INFO] Memory And Time Optimization = false 
+[2025-07-06 00:54:17] [INFO] Out-Of-Bag Estimate of the error = false 
+[2025-07-06 00:54:17] [INFO] Perform Feature Ranking = true 
+[2025-07-06 00:54:17] [INFO] Number of feature rankings computed: 
+[2025-07-06 00:54:17] [INFO]   - Genie3: 1 
+[2025-07-06 00:54:17] [INFO] Ensemble Method: Random Forest 
+[2025-07-06 00:54:17] [INFO] Loading 'C:/Users/Ningo/Desktop/S2R-Wind/data/swdpf/clus_ssl_arffs\fold6_test.arff' 
+[2025-07-06 00:54:17] [INFO] Bag: 1 
+[2025-07-06 00:54:17] [INFO] Bag: 2 
+[2025-07-06 00:54:17] [INFO] Bag: 3 
+[2025-07-06 00:54:17] [INFO] Bag: 4 
+[2025-07-06 00:54:17] [INFO] Bag: 5 
+[2025-07-06 00:54:17] [INFO] Bag: 6 
+[2025-07-06 00:54:17] [INFO] Bag: 7 
+[2025-07-06 00:54:17] [INFO] Bag: 8 
+[2025-07-06 00:54:17] [INFO] Bag: 9 
+[2025-07-06 00:54:17] [INFO] Bag: 10 
+[2025-07-06 00:54:17] [INFO] Feature importances written to: ..\data\swdpf\clus_ssl_settings\fold6_ssl_10Trees10Genie3.fimp 
+[2025-07-06 00:54:17] [INFO] Computing training error 
+[2025-07-06 00:54:17] [INFO] Loading 'C:/Users/Ningo/Desktop/S2R-Wind/data/swdpf/clus_ssl_arffs\fold6_test.arff' 
+[2025-07-06 00:54:17] [INFO] Computing testing error 
+[2025-07-06 00:54:17] [INFO] Output written to: fold6_ssl_10.out 
+[2025-07-06 00:54:17] [INFO] Done. 
