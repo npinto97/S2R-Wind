@@ -1,7 +1,7 @@
 Clus run ssl_data
 *****************
 
-Date: 7/6/25 12:39 AM
+Date: 7/7/25 1:05 PM
 File: fold2_ssl_70.out
 Attributes: 20 (input: 19, output: 1)
 Missing values: Yes
@@ -145,7 +145,7 @@ WriteErrorFile = No
 WriteModelFile = No
 WritePerBagModelFile = Yes
 WriteOOBFile = Yes
-WritePredictions = []
+WritePredictions = [Train, Test]
 GzipOutput = No
 ModelIDFiles = No
 WriteCurves = No
@@ -164,7 +164,7 @@ Statistics
 ----------
 
 FTValue (FTest): 1.0
-Induction Time: 80.733 sec
+Induction Time: 83.808 sec
 Pruning Time: 0 sec
 Prediction Time (total for ClusModel.Original): 
 	0 microsecs

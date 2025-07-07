@@ -22,3 +22,6 @@ Iterations = 10
 [SemiSupervised]
 SemiSupervisedMethod = PCT
 
+[Output]
+WritePredictions = Train, Test
+
