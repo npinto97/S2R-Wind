@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import numpy as np
 import re
+import csv
 
 S2RMS_RESULTS_PATH = "./results/swdpf_folds"
 ELASTICNET_RESULTS_PATH = "./results/elasticnet_folds/elasticnet_fold_results.csv"
@@ -83,15 +84,6 @@ def parse_clus_out_file(filepath):
                             pass
                         break
 
-            if "Root Relative Squared Error (RRMSE)" in line:
-                for j in range(i+1, i+5):
-                    if "Original" in lines[j]:
-                        try:
-                            rse = float(re.search(r"\[([0-9\.E\-]+)\]", lines[j]).group(1))
-                        except:
-                            pass
-                        break
-
             if "Pearson correlation coefficient" in line:
                 for j in range(i+1, i+5):
                     if "Original" in lines[j]:
@@ -102,13 +94,50 @@ def parse_clus_out_file(filepath):
                         except:
                             pass
                         break
-            
-        if n_train is not None:
-            n_labeled = int(n_train * (scale / 100))
-            n_unlabeled = n_train - n_labeled
+
+    if n_train is not None:
+        n_labeled = int(n_train * (scale / 100))
+        n_unlabeled = n_train - n_labeled
+    else:
+        n_labeled = np.nan
+        n_unlabeled = np.nan
+
+    # Calcolo RSE leggendo il file .test.pred.arff
+    pred_file_path = filepath.replace(".out", ".test.pred.arff")
+    y_true = []
+    y_pred = []
+
+    if os.path.exists(pred_file_path):
+        with open(pred_file_path, "r") as f:
+            lines = f.readlines()
+
+        data_started = False
+        for line in lines:
+            line = line.strip()
+            if not data_started:
+                if line.lower() == "@data":
+                    data_started = True
+                continue
+            if line == "" or line.startswith("%"):
+                continue
+            try:
+                true_val_str, pred_val_str, _ = next(csv.reader([line]))
+                y_true.append(float(true_val_str))
+                y_pred.append(float(pred_val_str))
+            except Exception as e:
+                continue
+
+        if len(y_true) > 1:
+            y_true = np.array(y_true)
+            y_pred = np.array(y_pred)
+            numerator = np.sum((y_true - y_pred) ** 2)
+            denominator = np.sum((y_true - np.mean(y_true)) ** 2)
+            rse = numerator / denominator if denominator != 0 else np.nan
         else:
-            n_labeled = np.nan
-            n_unlabeled = np.nan
+            rse = np.nan
+    else:
+        print(f"[WARNING] Pred file non trovato: {pred_file_path}")
+        rse = np.nan
 
     return {
         "Model": "CLUS+",
@@ -123,6 +152,7 @@ def parse_clus_out_file(filepath):
         "n_train": n_train,
         "n_test": n_test
     }
+
 
 def load_clus_results(out_dir=CLUS_OUT_DIR):
     records = []
