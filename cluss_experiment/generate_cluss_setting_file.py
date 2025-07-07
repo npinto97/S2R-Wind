@@ -40,6 +40,9 @@ Iterations = 10
 [SemiSupervised]
 SemiSupervisedMethod = PCT
 
+[Output]
+WritePredictions = Train, Test
+
 """
 
     with open(settings_path, "w") as f:
