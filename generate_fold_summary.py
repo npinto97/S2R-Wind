@@ -197,6 +197,7 @@ def compute_labeled_stats(all_results_df):
     print("\n[INFO] Example stats per model/scale:")
     stats = all_results_df.groupby(["Model", "scale"])[["n_labeled", "n_unlabeled", "n_train", "n_test"]].mean().round()
     print(stats)
+    all_results_df = all_results_df.round(2)
     return all_results_df
 
 
@@ -211,6 +212,7 @@ def compute_summary(all_results_df):
         train_avg=("n_train", "mean"),
         test_avg=("n_test", "mean")
     ).reset_index()
+    summary_df = summary_df.round(2)
     return summary_df
 
 
