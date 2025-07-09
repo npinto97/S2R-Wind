@@ -4,27 +4,59 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\citation{liu2024semi}
-\citation{petkovic2023clusplus}
 \babel@aux{english}{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Dataset and Preprocessing}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Business Understanding}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Data Understanding}{2}{section.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \url  {https://en.wikipedia.org/wiki/File:EERE_illust_large_turbine.gif}}}{2}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:turbine}{{1}{2}{\url {https://en.wikipedia.org/wiki/File:EERE_illust_large_turbine.gif}}{figure.caption.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison between the original dataset and the reduced per-fold version used in experiments.}}{3}{table.caption.2}\protected@file@percent }
+\newlabel{tab:dataset-comparison}{{1}{3}{Comparison between the original dataset and the reduced per-fold version used in experiments}{table.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Data Preparation}{3}{section.4}\protected@file@percent }
 \citation{liu2024semi}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Modeling}{4}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Supervised Baselines}{4}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}S2RMS}{4}{subsection.5.2}\protected@file@percent }
 \citation{petkovic2023clusplus}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}S2RMS}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}ElasticNet and XGBoost}{2}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}CLUS+}{2}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}CLUS+}{5}{subsection.5.3}\protected@file@percent }
+\newlabel{lst:clus_settings}{{1}{5}{CLUS+ Settings File Example for the Fold0 with 10\% Labeled Data}{lstlisting.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces CLUS+ Settings File Example for the Fold0 with 10\% Labeled Data}}{5}{lstlisting.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Evaluation}{6}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Overview of Experimental Setup}{6}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Mean number of labeled and unlabeled training samples per model and scale.}}{6}{table.caption.3}\protected@file@percent }
+\newlabel{tab:training_samples}{{2}{6}{Mean number of labeled and unlabeled training samples per model and scale}{table.caption.3}{}}
+\citation{liu2024semi}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Mean of RMSE, MAE, RSE, and $R^2$ per model and scale.}}{7}{table.caption.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Computational Efficiency}{7}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{7}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Appendices}{8}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Performance Metrics by Model and Labeling Scale}{8}{appendix.1.A}\protected@file@percent }
+\newlabel{sec:appendix_metrics}{{A}{8}{Performance Metrics by Model and Labeling Scale}{appendix.1.A}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces RMSE by model and scale}}{8}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:rmse}{{2}{8}{RMSE by model and scale}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces MAE by model and scale}}{9}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:mae}{{3}{9}{MAE by model and scale}{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces RSE by model and scale}}{9}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:rse}{{4}{9}{RSE by model and scale}{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces $R^2$ by model and scale}}{9}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:r2}{{5}{9}{$R^2$ by model and scale}{figure.caption.9}{}}
+\gdef \LT@i {\LT@entry 
+    {1}{57.47232pt}\LT@entry 
+    {1}{30.84714pt}\LT@entry 
+    {1}{35.70264pt}\LT@entry 
+    {1}{39.77788pt}\LT@entry 
+    {1}{39.77788pt}\LT@entry 
+    {1}{29.77785pt}\LT@entry 
+    {1}{29.77785pt}\LT@entry 
+    {1}{37.70235pt}\LT@entry 
+    {1}{50.48006pt}\LT@entry 
+    {1}{46.91064pt}\LT@entry 
+    {1}{41.28012pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Detailed Results per Fold and Model}{10}{appendix.1.B}\protected@file@percent }
+\newlabel{app:detailed_results}{{B}{10}{Detailed Results per Fold and Model}{appendix.1.B}{}}
 \bibstyle{abbrv}
 \bibdata{sample}
 \bibcite{liu2024semi}{1}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Evaluation and Conclusion}{3}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}ElasticNet and XGBoost - Full-Data Baseline}{3}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}S2RMS - Semi-supervised with XGBoost Co‑learners}{3}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}CLUS+ - Semi-supervised Trees}{3}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Comparative Observations}{3}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Key Takeaways}{3}{subsection.4.5}\protected@file@percent }
 \bibcite{petkovic2023clusplus}{2}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Average performance per method and labeled percentage over 8 folds.}}{4}{table.1}\protected@file@percent }
-\newlabel{tab:results}{{1}{4}{Average performance per method and labeled percentage over 8 folds}{table.1}{}}
-\gdef \@abspage@last{4}
+\gdef \@abspage@last{11}

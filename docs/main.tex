@@ -17,8 +17,15 @@
 \usepackage{csquotes}
 \usepackage{comment}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{pdflscape}
+\usepackage[toc,page]{appendix}
 % Definizione dei colori personalizzati
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -29,7 +36,7 @@
 
 % Definizione dello stile personalizzato
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
+    % backgroundcolor=\color{backcolour},   
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{codegray},
@@ -104,16 +111,138 @@
 \section{Introduction}
 \input{contents/introduction}
 
-\section{Dataset and Preprocessing}
-\input{contents/dataset_preprocess}
+\section{Business Understanding}
+\input{contents/business_understanding}
 
-\section{Methodology}
-\input{contents/methodology}
+\section{Data Understanding}
+\input{contents/data_understanding}
 
-\section{Evaluation and Conclusion}
+\section{Data Preparation}
+\input{contents/data_preparation}
+
+\section{Modeling}
+\input{contents/modeling}
+
+\section{Evaluation}
 \input{contents/evaluation}
 
+% \section{Discussion}
+% \input{contents/discussion}
 
+\section{Conclusion}
+\input{contents/conclusion}
+
+\begin{appendices}
+\section{Performance Metrics by Model and Labeling Scale}
+\label{sec:appendix_metrics}
+These results clearly show that CLUS+, through its ensemble-based semi-supervised approach, achieves the best balance between label efficiency and predictive performance. It is especially well-suited for wind power forecasting scenarios where labeled data is expensive or partially missing.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/rmse_by_model_and_scale.png}
+    \caption{RMSE by model and scale}
+    \label{fig:rmse}
+\end{figure}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/mae_by_model_and_scale.png}
+    \caption{MAE by model and scale}
+    \label{fig:mae}
+\end{figure}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/rse_by_model_and_scale.png}
+    \caption{RSE by model and scale}
+    \label{fig:rse}
+\end{figure}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/r2_by_model_and_scale.png}
+    \caption{$R^2$ by model and scale}
+    \label{fig:r2}
+\end{figure}
+
+\newpage
+\section{Detailed Results per Fold and Model}
+\label{app:detailed_results}
+
+\noindent
+This appendix reports the detailed performance metrics for each fold, model, and labeling scale.
+
+%\renewcommand{\arraystretch}{1.1} % aumenta lo spazio tra le righe
+\begin{longtable}{l c c c c c c c c c c}
+\toprule
+\textbf{Model} & \textbf{fold} & \textbf{scale} & \textbf{rmse} & \textbf{mae} & \textbf{rse} & \textbf{$R^2$} & \textbf{n\_lab} & \textbf{n\_unlab} & \textbf{n\_train} & \textbf{n\_test} \\
+\midrule
+S2RMS & 0 & 10 & 245.65 & 177.61 & 0.28 & 0.72 & 2304 & 20736 & 23040 & 10080 \\ 
+S2RMS & 1 & 10 & 200.46 & 150.13 & 0.43 & 0.57 & 2304 & 20736 & 23040 & 10080 \\ 
+S2RMS & 2 & 10 & 121.72 & 78.8 & 0.2 & 0.8 & 2304 & 20736 & 23040 & 10080 \\ 
+S2RMS & 3 & 10 & 155.65 & 110.85 & 0.1 & 0.9 & 2304 & 20736 & 23040 & 10080 \\ 
+S2RMS & 4 & 10 & 220.72 & 163.23 & 0.25 & 0.75 & 2304 & 20736 & 23040 & 10080 \\ 
+S2RMS & 5 & 10 & 225.86 & 155.3 & 0.33 & 0.67 & 2304 & 20736 & 23040 & 10080 \\ 
+S2RMS & 6 & 10 & 204.02 & 142.03 & 0.22 & 0.78 & 2304 & 20736 & 23040 & 10080 \\ 
+S2RMS & 7 & 10 & 207.81 & 148.57 & 0.32 & 0.68 & 2304 & 20736 & 23040 & 10080 \\ 
+S2RMS & 0 & 20 & 229.06 & 163.76 & 0.24 & 0.76 & 4608 & 18432 & 23040 & 10080 \\ 
+S2RMS & 1 & 20 & 193.37 & 142.66 & 0.4 & 0.6 & 4608 & 18432 & 23040 & 10080 \\ 
+S2RMS & 2 & 20 & 112.29 & 70.23 & 0.17 & 0.83 & 4608 & 18432 & 23040 & 10080 \\ 
+S2RMS & 3 & 20 & 154.47 & 107.98 & 0.1 & 0.9 & 4608 & 18432 & 23040 & 10080 \\ 
+S2RMS & 4 & 20 & 220.38 & 163.37 & 0.25 & 0.75 & 4608 & 18432 & 23040 & 10080 \\ 
+S2RMS & 5 & 20 & 210.49 & 140.98 & 0.29 & 0.71 & 4608 & 18432 & 23040 & 10080 \\ 
+S2RMS & 6 & 20 & 209.85 & 150.67 & 0.23 & 0.77 & 4608 & 18432 & 23040 & 10080 \\ 
+S2RMS & 7 & 20 & 204.61 & 146.53 & 0.31 & 0.69 & 4608 & 18432 & 23040 & 10080 \\ 
+S2RMS & 0 & 70 & 223.68 & 157.79 & 0.23 & 0.77 & 16127 & 6913 & 23040 & 10080 \\ 
+S2RMS & 1 & 70 & 188.27 & 134.45 & 0.38 & 0.62 & 16127 & 6913 & 23040 & 10080 \\ 
+S2RMS & 2 & 70 & 111.09 & 70.06 & 0.17 & 0.83 & 16127 & 6913 & 23040 & 10080 \\ 
+S2RMS & 3 & 70 & 147.25 & 102.93 & 0.09 & 0.91 & 16127 & 6913 & 23040 & 10080 \\ 
+S2RMS & 4 & 70 & 221.78 & 163.91 & 0.26 & 0.74 & 16127 & 6913 & 23040 & 10080 \\ 
+S2RMS & 5 & 70 & 204.11 & 134.46 & 0.27 & 0.73 & 16127 & 6913 & 23040 & 10080 \\ 
+S2RMS & 6 & 70 & 200.6 & 144.46 & 0.21 & 0.79 & 16127 & 6913 & 23040 & 10080 \\ 
+S2RMS & 7 & 70 & 201.91 & 143.76 & 0.3 & 0.7 & 16127 & 6913 & 23040 & 10080 \\ 
+ElasticNet & 0 & 100 & 160.91 & 105.31 & 0.12 & 0.88 & 23040 & -- & 23040 & 10080 \\ 
+ElasticNet & 1 & 100 & 118.34 & 69.86 & 0.15 & 0.85 & 23040 & -- & 23040 & 10080 \\ 
+ElasticNet & 2 & 100 & 69.58 & 35.05 & 0.07 & 0.93 & 23040 & -- & 23040 & 10080 \\ 
+ElasticNet & 3 & 100 & 96.39 & 61.09 & 0.04 & 0.96 & 23040 & -- & 23040 & 10080 \\ 
+ElasticNet & 4 & 100 & 116.75 & 83.54 & 0.07 & 0.93 & 23040 & -- & 23040 & 10080 \\ 
+ElasticNet & 5 & 100 & 138.2 & 88.06 & 0.12 & 0.88 & 23040 & -- & 23040 & 10080 \\ 
+ElasticNet & 6 & 100 & 124.93 & 81.86 & 0.08 & 0.92 & 23040 & -- & 23040 & 10080 \\ 
+ElasticNet & 7 & 100 & 143.78 & 94.24 & 0.15 & 0.85 & 23040 & -- & 23040 & 10080 \\ 
+XGBoost & 0 & 100 & 189.7 & 126.09 & 0.17 & 0.83 & 23040 & -- & 23040 & 10080 \\ 
+XGBoost & 1 & 100 & 110.85 & 67.35 & 0.13 & 0.87 & 23040 & -- & 23040 & 10080 \\ 
+XGBoost & 2 & 100 & 73.86 & 31.25 & 0.07 & 0.93 & 23040 & -- & 23040 & 10080 \\ 
+XGBoost & 3 & 100 & 142.9 & 95.7 & 0.08 & 0.92 & 23040 & -- & 23040 & 10080 \\ 
+XGBoost & 4 & 100 & 147.47 & 123.15 & 0.11 & 0.89 & 23040 & -- & 23040 & 10080 \\ 
+XGBoost & 5 & 100 & 182.64 & 103.52 & 0.22 & 0.78 & 23040 & -- & 23040 & 10080 \\ 
+XGBoost & 6 & 100 & 199.1 & 145.16 & 0.21 & 0.79 & 23040 & -- & 23040 & 10080 \\ 
+XGBoost & 7 & 100 & 173.17 & 122 & 0.22 & 0.78 & 23040 & -- & 23040 & 10080 \\ 
+CLUS+ & 0 & 10 & 176.41 & 115.56 & 0.14 & 0.86 & 2304 & 20736 & 23040 & 10080 \\ 
+CLUS+ & 0 & 20 & 167.3 & 111.02 & 0.13 & 0.87 & 4608 & 18432 & 23040 & 10080 \\ 
+CLUS+ & 0 & 70 & 173.02 & 115.69 & 0.14 & 0.86 & 16127 & 6913 & 23040 & 10080 \\ 
+CLUS+ & 1 & 10 & 167.54 & 135.39 & 0.3 & 0.79 & 2304 & 20736 & 23040 & 10080 \\ 
+CLUS+ & 1 & 20 & 113.34 & 67.2 & 0.14 & 0.86 & 4608 & 18432 & 23040 & 10080 \\ 
+CLUS+ & 1 & 70 & 129.88 & 95.79 & 0.18 & 0.84 & 16127 & 6913 & 23040 & 10080 \\ 
+CLUS+ & 2 & 10 & 68.39 & 29.27 & 0.06 & 0.94 & 2304 & 20736 & 23040 & 10080 \\ 
+CLUS+ & 2 & 20 & 66.72 & 28.23 & 0.06 & 0.94 & 4608 & 18432 & 23040 & 10080 \\ 
+CLUS+ & 2 & 70 & 67.21 & 36.71 & 0.06 & 0.94 & 16127 & 6913 & 23040 & 10080 \\ 
+CLUS+ & 3 & 10 & 100.57 & 70.31 & 0.04 & 0.96 & 2304 & 20736 & 23040 & 10080 \\ 
+CLUS+ & 3 & 20 & 101.59 & 65.13 & 0.04 & 0.96 & 4608 & 18432 & 23040 & 10080 \\ 
+CLUS+ & 3 & 70 & 95.31 & 66.44 & 0.04 & 0.97 & 16127 & 6913 & 23040 & 10080 \\ 
+CLUS+ & 4 & 10 & 113.41 & 80.08 & 0.07 & 0.94 & 2304 & 20736 & 23040 & 10080 \\ 
+CLUS+ & 4 & 20 & 111.31 & 82.76 & 0.06 & 0.94 & 4608 & 18432 & 23040 & 10080 \\ 
+CLUS+ & 4 & 70 & 118.35 & 91.76 & 0.07 & 0.93 & 16127 & 6913 & 23040 & 10080 \\ 
+CLUS+ & 5 & 10 & 150.19 & 90.22 & 0.15 & 0.86 & 2304 & 20736 & 23040 & 10080 \\ 
+CLUS+ & 5 & 20 & 155.74 & 99.05 & 0.16 & 0.85 & 4608 & 18432 & 23040 & 10080 \\ 
+CLUS+ & 5 & 70 & 156.96 & 102.33 & 0.16 & 0.85 & 16127 & 6913 & 23040 & 10080 \\ 
+CLUS+ & 6 & 10 & 149.62 & 103.31 & 0.12 & 0.89 & 2304 & 20736 & 23040 & 10080 \\ 
+CLUS+ & 6 & 20 & 138.62 & 94.85 & 0.1 & 0.91 & 4608 & 18432 & 23040 & 10080 \\ 
+CLUS+ & 6 & 70 & 140.01 & 93.1 & 0.1 & 0.91 & 16127 & 6913 & 23040 & 10080 \\ 
+CLUS+ & 7 & 10 & 155.32 & 103.12 & 0.18 & 0.83 & 2304 & 20736 & 23040 & 10080 \\ 
+CLUS+ & 7 & 20 & 154 & 107.11 & 0.18 & 0.83 & 4608 & 18432 & 23040 & 10080 \\ 
+CLUS+ & 7 & 70 & 159.95 & 118.61 & 0.19 & 0.83 & 16127 & 6913 & 23040 & 10080 \\ 
+\bottomrule
+\end{longtable}
+
+
+\end{appendices}
 
 \bibliographystyle{abbrv}
 \bibliography{sample}

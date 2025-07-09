@@ -1,49 +1,61 @@
-The evaluation aims to compare performance across three methods—ElasticNet, XGBoost, and S2RMS—using consistent experimental folds and varying percentages of labeled data. For both S2RMS and CLUS+, we employed eight temporal folds with three scales of labeled data: 10\%, 20\%, and 70\%. ElasticNet and XGBoost, however, were evaluated using the full dataset (100\%) per fold, reflecting standard semi-supervised protocols.
+We evaluate the performance of S2RMS against two baseline models, ElasticNet and XGBoost, across multiple folds and varying levels of supervision. The evaluation metrics include Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), Relative Squared Error (RSE), and Coefficient of Determination (R$^2$). These are computed over 8 stratified temporal folds, using 10\%, 20\%, and 70\% of labeled data for training. The remaining data in each fold is held out for testing.
 
-\subsection{ElasticNet and XGBoost - Full-Data Baseline}
+\subsection{Overview of Experimental Setup}
 
-ElasticNet and XGBoost were trained separately on 100\% of available data each fold. As expected, both baselines achieved superior accuracy compared to S2RMS and CLUS+ under lower labeling regimes. Specifically, ElasticNet reported RMSE values in the low hundreds and high R$^2$ scores ($\approx0.66$). XGBoost consistently matched or exceeded these results, confirming that full supervision leads to markedly stronger predictive performance. These baselines serve as upper-bound references against which semi-supervised methods are judged.
-
-\subsection{S2RMS - Semi-supervised with XGBoost Co‑learners}
-
-The S2RMS method was adapted to use three XGBoost regressors (utilizing GPU acceleration via \texttt{hist} and \texttt{device='cuda'}) as co-learners, replacing its original random forests. Experiments limited each fold's labeled data to 10\%, 20\%, or 70\%, leaving the remaining samples for unlabeled inference and evaluation.
-
-Performance steadily improved with more labeled data. At 10\%, S2RMS achieved average RMSE in the mid-hundreds ($\approx240$), dropping to RMSE $\approx145$ as labeling grows to 70\%. MAE and RSE followed similar trends, while R$^2$ increased accordingly from negative or low values at 10\% to acceptable positive levels at 70\%. Importantly, the experiments showed consistent variance across folds, with standard deviations under 0.1 for MAE and RSE at higher scales, demonstrating reliability.
-
-\subsection{CLUS+ - Semi-supervised Trees}
-
-Running CLUS+ in semi-supervised random-forest mode (\texttt{-forest -ssl}) produced results comparable to S2RMS at matching labeled percentages. Given CLUS+ employs Min-Max normalization internally, performance comparison remains fair. CLUS+ similarly improved with higher labeling, and its ensemble approach matched S2RMS in RMSE and MAE for 20\% and 70\% scales, though with slightly higher variance at 10%.
-
-\subsection{Comparative Observations}
-
-When compared directly, ElasticNet and XGBoost on full data exceed S2RMS and CLUS+. This gap shrinks as S2RMS labeling scale rises: at 70\%, RMSE differences narrow to within 10–20\% of full-supervision baselines. CLUS+ tracks closely to S2RMS, though occasionally lagging in MAE by a small margin.
-
-The scalability advantage of GPU-accelerated XGBoost within S2RMS is notable: retraining times per iteration dropped by \~60\% relative to original forests and dropped CPU utilization dramatically. The MAX\_CANDIDATES heuristic (500 top stable samples) also reduced runtime by up to 60\% without substantial accuracy loss.
-
-Reliability across folds was high: 70\% labeling yields stable mean RMSE with standard deviation <5\% of the mean, while 10\% labeling introduces greater variance. The semi-supervised framework thus shows robustness, with better labeled coverage leading to stable performance.
-
-\subsection{Key Takeaways}
-
-The experiments demonstrate that S2RMS, enhanced with GPU-based co-learners and candidate selection, can match or even outperform traditional SSL tree-based models like CLUS+ across multiple folds. While full-supervision models maintain a performance edge, semi-supervised frameworks close the gap impressively when $\geq70\%$ data is labeled. Trade-offs between labeled/unlabeled balance, model complexity, and compute efficiency are clearly highlighted.
-
+For each fold, labeled and unlabeled sets are selected proportionally from the available data. The Table~\ref{tab:training_samples} shows the average number of labeled and unlabeled instances used in training and testing, respectively. The semi-supervised method, S2RMS, leverages additional unlabeled data in training, while ElasticNet and XGBoost rely solely on the labeled portion.
 
 \begin{table}[ht]
 \centering
-\caption{Average performance per method and labeled percentage over 8 folds.}
-\label{tab:results}
-\begin{tabular}{lcccccccc}
+\caption{Mean number of labeled and unlabeled training samples per model and scale.}
+\label{tab:training_samples}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{l c *{4}{>{\centering\arraybackslash}X}}
 \toprule
-\textbf{Model} & \textbf{\% Labeled} & \textbf{RMSE} & \textbf{MAE} & \textbf{RSE} & \textbf{R\textsuperscript{2}} & \textbf{\# Labeled} & \textbf{\# Unlabeled} & \textbf{Test Size} \\
+Model & Scale & Labeled & Unlabeled & $n_{\text{train}}$ & $n_{\text{test}}$ \\
 \midrule
-ElasticNet & 100 & 10.93  & 77.38  & 0.10 & 0.90 & 23040 & ---   & 10080 \\
-XGBoost    & 100 & 12.22  & 101.78 & 0.15 & 0.85 & 23040 & ---   & 10080 \\
-S2RMS      & 10  & 197.74 & 140.81 & 0.27 & 0.73 & 2304  & 20736 & 10080 \\
-S2RMS      & 20  & 191.82 & 135.77 & 0.25 & 0.75 & 4608  & 18432 & 10080 \\
-S2RMS      & 70  & 187.34 & 131.48 & 0.24 & 0.76 & 16127 & 6913  & 10080 \\
-CLUS+      & 10  & 135.18 & 90.91  & 0.35 & 0.88 & 2304  & 20736 & 10080 \\
-CLUS+      & 20  & 126.08 & 81.92  & 0.32 & 0.90 & 4608  & 18432 & 10080 \\
-CLUS+      & 70  & 130.09 & 90.05  & 0.33 & 0.89 & 16127 & 6913  & 10080 \\
+CLUS+       & 10  & 2304  & 20736 & 23040 & 10080 \\
+CLUS+       & 20  & 4608  & 18432 & 23040 & 10080 \\
+CLUS+       & 70  & 16127 & 6913  & 23040 & 10080 \\
+ElasticNet  & 100 & 23040 & --    & 23040 & 10080 \\
+S2RMS       & 10  & 2304  & 20736 & 23040 & 10080 \\
+S2RMS       & 20  & 4608  & 18432 & 23040 & 10080 \\
+S2RMS       & 70  & 16127 & 6913  & 23040 & 10080 \\
+XGBoost     & 100 & 23040 & --    & 23040 & 10080 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
+Across all scales, CLUS+ consistently outperforms both S2RMS and ElasticNet. When trained with only 10\% of the labeled data, CLUS+ achieves an average RMSE of approximately 135.18, with an $R^2$ of 0.882. In contrast, S2RMS underperforms significantly at this scale, with an RMSE of 197.74 and an $R^2$ of 0.733. This performance gap narrows only slightly at higher label densities. Even at 70\% labeled data, CLUS+ maintains superiority with an RMSE of 130.09 and $R^2$ of 0.891, while S2RMS does not scale comparably.
+
+Notably, CLUS+ shows a reduction in both error metrics and variance as the proportion of labeled data increases from 10\% to 20\%, which aligns with expectations in semi-supervised learning. However, the marginal improvement from 20\% to 70\% is modest, suggesting that CLUS+ extracts considerable predictive value even from limited labeled supervision. This behavior is characteristic of its decision tree-based semi-supervised architecture, which can effectively leverage unlabeled instances by exploiting structural regularities in the input space.
+
+ElasticNet, trained using fully labeled data (100\% of the training set), delivers the best raw RMSE (121.11) and lowest MAE (77.38). However, it lacks the semi-supervised capability and requires full annotation, making it unsuitable in label-scarce scenarios. Moreover, the minimal performance advantage of ElasticNet compared to CLUS+ at 70\% labeled data illustrates that CLUS+ provides a more scalable and label-efficient alternative, especially considering its performance at lower annotation budgets.
+
+S2RMS performs consistently below both CLUS+ and ElasticNet. Its RMSE remains high and unstable across scales, and even at 70\%, it fails to match CLUS+'s performance at 10\%. The method's iterative pseudo-labeling and model update strategy introduces variance in fold-level results. One possible cause is that its candidate selection process and pseudo-labeling quality are strongly affected by the initial label distribution, which can degrade model reliability when the sample size is small or the feature space is high-dimensional.
+
+\begin{table}[ht]
+\centering
+\caption{Mean of RMSE, MAE, RSE, and $R^2$ per model and scale.}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{l c *{8}{>{\centering\arraybackslash}X}}
+\toprule
+Model & Scale & RMSE$_\mu$ & MAE$_\mu$ & RSE$_\mu$ & $R^2_\mu$\\
+\midrule
+CLUS+       & 10    & 135.18    & 90.91     & 0.13  & 0.88 \\
+CLUS+       & 20    & 126.08    & 81.92     & 0.11  & \textbf{0.90} \\
+CLUS+       & 70    & 130.09    & 90.05     & 0.12  & 0.89 \\
+ElasticNet  & 100   & \textbf{121.11}    & \textbf{77.38}     & \textbf{0.10}   & \textbf{0.90}\\
+S2RMS       & 10    & 197.74    & 140.82    & 0.27  & 0.73 \\
+S2RMS       & 20    & 191.82    & 135.77    & 0.25  & 0.75 \\
+S2RMS       & 70    & 187.34    & 131.48    & 0.24  & 0.76 \\
+XGBoost     & 100   & 152.46    & 101.78    & 0.15  & 0.85\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+For a visual comparison of these metrics across models and labeling scales, refer to the plots provided in Appendix~\ref{sec:appendix_metrics}.
+For the detailed performance metrics for each fold, model, and labeling scale, refer to the plots provided in Appendix~\ref{app:detailed_results}.
+
+\subsection{Computational Efficiency}
+
+In addition to delivering superior predictive performance, CLUS+ offers significant advantages in computational efficiency. Training S2RMS on a full fold using only 10\% of labeled data often resulted in excessive memory consumption and prolonged runtimes, frequently exceeding available system resources despite aggressive parallelization and GPU acceleration. To mitigate this, we were forced to limit the candidate set used during pseudo-labeling and adapt the base regressors to GPU-compatible implementations. Even with these adjustments, the training process remained substantially slower than that of CLUS+. This behavior is consistent with the original experimental design in the S2RMS paper, where all evaluations were conducted on considerably smaller datasets—typically in the order of a few thousand instances. In particular, S2RMS was applied to a random subset of 2000 data points\cite{liu2024semi}, rather than to the full data distribution, which masks the method’s poor scalability under realistic data volumes. In contrast, CLUS+ is able to operate on the full training set without any reduction, maintaining both accuracy and tractable training times. This makes CLUS+ not only more accurate, but also vastly more practical for large-scale or time-sensitive applications

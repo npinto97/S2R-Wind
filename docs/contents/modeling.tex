@@ -1,0 +1,64 @@
+Three classes of models were implemented and evaluated: supervised baselines (ElasticNet, XGBoost), a semi-supervised co-training approach (S2RMS), and a decision tree-based semi-supervised ensemble method (CLUS+). All models were trained independently on each fold and for each label percentage, maintaining identical data splits for fairness.
+
+\subsection{Supervised Baselines}
+
+The \textit{ElasticNet} model was implemented using a scikit-learn pipeline with standard scaling and a grid search over regularization parameters. The training set consisted only of labeled data. Hyperparameters were selected using time series-aware cross-validation (5 splits). ElasticNet was chosen as a linear baseline, known for its robustness under small sample sizes due to its \texttt{l1\_ratio} control over sparsity.
+
+The \textit{XGBoost} baseline was trained similarly, using a grid search over tree depth, learning rate, and number of estimators. XGBoost offers a strong nonlinear baseline and often outperforms other methods when sufficient labeled data is available. GPU acceleration was enabled during both training and inference using the \texttt{device=cuda} and \texttt{tree\_method=hist} parameters. Predictions were made after applying the inverse transform of the target scaler.
+
+Both baseline methods were trained exclusively on the labeled portion of the data, entirely ignoring the unlabeled training samples. As such, they serve as upper-bound reference points for evaluating the effectiveness of semi-supervised models. Their performance represents what can be achieved under fully supervised conditions, assuming access only to annotated data. This allows us to assess whether semi-supervised techniques like S2RMS and CLUS+ can approach or surpass these upper bounds by effectively leveraging additional unlabeled information.
+
+\subsection{S2RMS}
+
+The \textit{S2RMS} framework \cite{liu2024semi} (Semi-Supervised Regression via Embedding Space Mapping and Pseudo-Label Smearing) extends classical co-training by combining deep metric learning with a cautious pseudo-labeling mechanism tailored for regression tasks. At its core, S2RMS employs a Triplet neural network trained on pairwise data constructed from the labeled set, enabling the projection of both labeled and unlabeled instances into a learned embedding space. This mapping encourages smoothness and local consistency under the manifold assumption, such that similar instances lie closer in the latent space. In our implementation, we use three heterogeneous XGBoost regressors as base learners, each initialized on a distinct 80\% bootstrap sample of the labeled data, with the remaining 20\% reserved for internal validation.
+
+During each co-training round, the Triplet network is used to identify unlabeled instances that are highly similar to labeled ones, according to an exponentially decaying similarity threshold $\tau$, and these are aggregated into a candidate pool. Each regressor consults the predictions from the other two regressors to compute the variance (or standard deviation) of the outputs, which acts as a stability criterion. Only instances with a standard deviation below a fixed threshold (set to 0.4) are considered sufficiently stable for pseudo-labeling, a technique inspired by the "pseudo-label smearing" strategy proposed by Liu et al. To manage computational load, we limit each learner to at most 500 such candidates per iteration.
+
+A margin-based confidence metric, the $\Delta$-score, is then calculated for each stable sample, quantifying its utility by measuring the expected reduction in validation error (MSE) after hypothetical inclusion. Only the top $g\_r$ samples per learner, those demonstrating positive gain, are accepted into the training set per iteration. This highly selective acquisition procedure mitigates the risk of error propagation due to noisy pseudo-labels, effectively controlling for label drift.
+
+The embedding-based similarity selection is governed by a decaying schedule $\tau_{t+1} = \lambda \tau_t$ (with $\lambda < 1$), allowing the algorithm to begin conservatively by focusing on near-neighbors and gradually relax this constraint in later stages. This mimics a curriculum learning approach by progressively exposing learners to more diverse samples. After each augmentation, regressors are retrained from scratch to preserve independence among learners and to ensure proper integration of the new data.
+
+Final predictions are obtained via ensemble averaging. To support efficient inference, particularly at scale, GPU-accelerated prediction paths are utilized when available via the XGBoost backend, while maintaining CPU compatibility to ensure cross-platform reproducibility and robustness.
+
+
+\subsection{CLUS+}
+
+The \textit{CLUS+} framework \cite{petkovic2023clusplus} is a Java-based open-source machine learning system built upon the predictive clustering paradigm, specifically designed for structured output prediction. It extends the original CLUS software with advanced support for semi-supervised learning, ensemble methods, and feature importance analysis. At its core, CLUS+ utilizes Predictive Clustering Trees (PCTs), which generalize classical decision trees by treating the decision process as a top-down clustering operation. Each internal node partitions the data based on a variance reduction criterion tailored to the task (e.g., single-target or multi-target regression), while leaf nodes represent clusters labeled by prototype functions. These PCTs are trained using a top-down induction-of-decision-trees (TDIDT) algorithm with a greedy heuristic that maximizes homogeneity of the induced clusters.
+
+In our experiments, CLUS+ was employed in its ensemble-based semi-supervised mode by enabling the \texttt{-forest -ssl} flags in the settings file. This configuration constructs a Random Forest of PCTs using bootstrap aggregating (bagging) and random feature subspace selection at each node. The number of trees in the ensemble and the function $f(D)$, which controls the subspace size (typically set to $\sqrt{D}$), are user-defined. To support partially labeled data, the SSL component of CLUS+ implements self-training within the predictive clustering framework. It allows trees to be grown even when instances contain missing target values, making it highly applicable to real-world scenarios with sparse annotations.
+
+The experimental workflow included automatic generation of settings files for each fold and supervision level (Listing~\ref{lst:clus_settings}). These configuration files define paths to training and testing datasets in ARFF format, SSL-specific parameters, and the choice of feature ranking method, Genie3 in our case. Genie3 is an ensemble-based feature importance estimator inspired by Random Forests, adapted to structured output settings. When enabled, feature importance scores are output to \texttt{.fimp} files, including detailed rankings for each predictive target.
+
+\begin{lstlisting}[label=lst:clus_settings, caption=CLUS+ Settings File Example for the Fold0 with 10\% Labeled Data]
+[General]
+RandomSeed = 42
+
+[Data]
+File = .data/swdpf/clus_ssl_arffs\fold0_ssl_10.arff
+TestSet = .data/swdpf/clus_ssl_arffs\fold0_test.arff
+PruneSet = None
+
+[Attributes]
+Descriptive = 1-19
+Target = 20
+
+[Tree]
+Heuristic = VarianceReduction
+
+[Ensemble]
+SelectRandomSubspaces = SQRT
+EnsembleMethod = RForest
+FeatureRanking = Genie3
+Iterations = 10 
+
+[SemiSupervised]
+SemiSupervisedMethod = PCT
+
+[Output]
+WritePredictions = Train, Test
+
+\end{lstlisting}
+
+Each execution of CLUS+ yields a comprehensive \texttt{.out} file summarizing the parameter settings, model variants (baseline, original full tree, pruned version), and evaluation metrics such as RMSE, MAE, and RSE on both training and test data. The \texttt{.train.pred.arff} and \texttt{.test.pred.arff} files record the instance-level predictions, including both ground truth and ensemble-averaged outputs, along with auxiliary metadata such as contributing models and prediction confidence.
+
+To streamline result collection, a custom parser was used to automatically extract model statistics from the CLUS+ outputs, aggregating them across folds and supervision levels. The experimental configuration utilized variance reduction as the split criterion, random subspace selection (SQRT) for node-wise feature selection, and an ensemble size of ten trees per forest. This setup offered a robust trade-off between interpretability, scalability, and predictive performance, while maintaining compatibility with structured output learning and semi-supervised settings.

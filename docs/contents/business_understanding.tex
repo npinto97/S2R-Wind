@@ -1,0 +1,7 @@
+Wind energy providers require accurate short-term power forecasts to support grid stability, market bidding, and asset management. Forecasting models must estimate the turbine's active power output (PATV) using historical sensor measurements, meteorological variables, and temporal features. However, collecting labeled output data at high quality and for extended periods is costly. In contrast, input data is generally abundant and not expensive to obtain.
+
+This scenario defines a typical semi-supervised regression setting, where only a subset of instances contains ground truth labels. The business goal is to maximize predictive accuracy using minimal labeled data, reducing annotation costs while maintaining forecast reliability.
+
+To simulate realistic deployment conditions, we adopt a rolling-window temporal evaluation strategy with eight time-based folds, each comprising 15 days of training and 7 days of testing. Within each fold, only a fraction of the training samples are labeled (10\%, 20\%, or 70\%), while the remainder are unlabeled.
+
+Forecasting accuracy is evaluated using multiple metrics. RMSE provides a scale-sensitive view of absolute error, while MAE offers robustness to outliers. RSE quantifies the error relative to variance in the ground truth and R$^2$ indicates the proportion of variance explained by the model.
